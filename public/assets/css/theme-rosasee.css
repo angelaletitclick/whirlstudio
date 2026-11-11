@@ -1,7 +1,8 @@
 /* ROSASEE – Kundenpalette (10.11.2026)
    Flächen:   #84C1D9 Seeblau · #FDEDE5 Creme · Weiß
    Akzent:    #F25E5E Rot/Pink – nur Überschriften, Labels, Preise, Nummern, Buttons (das dunkle Rot #8C2A2A ist raus, 10.11.2026)
-   Text:      auf Blau weiß, auf Creme/Weiß neutral dunkel
+   Text:      überall neutral dunkel (#222). Weiß auf Seeblau hätte nur 2:1 Kontrast (Kritik 11.11.2026).
+   Akzent als Schrift/Button: tiefere Koralle #C64D4D (4,6:1 auf Weiß/Creme). #F25E5E bleibt für Linien und Flächen.
    Fotos werden neutral (schwarz) abgedunkelt, nicht eingefärbt.
    Schriften: Bodoni Moda (Headline, elegant, mit Kursive) + Outfit (Text). Layout: layout-ed.css */
 @font-face { font-family: 'Bodoni Moda'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/bodoni-moda-v28-latin-regular.woff2') format('woff2'); }
@@ -20,17 +21,17 @@
   --p1: #F25E5E; /* Rot/Pink (früher Lila #8C2A2A) */
   --p2: #FDEDE5; /* Creme */
   --p3: #84C1D9; /* Seeblau */
-  --p4: #F25E5E; /* Pink */
+  --p4: #C64D4D; /* Koralle tief – für Schrift und Buttons (#F25E5E hat auf Creme nur 2,8:1) */
   --text: #222;  /* neutraler Fließtext auf Hell */
 
   --bg: var(--p2); --bg-alt: var(--p3); --bg-lilac: var(--p3); --bg-teal: var(--p3); --bg-sun: #fff;
   --ink: var(--text); --ink-soft: color-mix(in srgb, var(--text) 78%, var(--bg)); --line: color-mix(in srgb, var(--text) 20%, var(--bg));
   /* „dunkle“ Abschnitte (Studios) werden weiß */
   --dark-bg: #fff; --dark-ink: var(--text); --dark-soft: color-mix(in srgb, var(--text) 78%, #fff); --dark-line: color-mix(in srgb, var(--text) 18%, #fff);
-  --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--p4) 85%, #000);
-  --c3: var(--p1);
+  --accent: var(--p4); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--p4) 85%, #000);
+  --c3: var(--p4);
   --scrim: 0,0,0; /* neutrale Abdunklung, Fotos nicht einfärben */
-  --block-bg: var(--p3); --block-ink: #fff; --block-hi: var(--p1); --block-btn: var(--p1); --block-btn-ink: #fff;
+  --block-bg: var(--p3); --block-ink: var(--text); --block-hi: var(--text); --block-btn: var(--p4); --block-btn-ink: #fff;
   --num: var(--p4);
 }
 /* Kein Grain – klare Flächen */
@@ -39,41 +40,40 @@
 /* Reihenfolge der Flächen: Intro Creme · Pärchen Weiß · Mädelsabend Blau · Studios Weiß · Vorteile Blau · Preise Weiß … Footer Blau */
 .d-rosasee .aud--paare { background-color: #fff; }
 
-/* Blaue Flächen: weiße Schrift */
+/* Blaue Flächen: dunkle Schrift (Weiß auf Seeblau = 2:1) */
 .d-rosasee .sec--alt, .d-rosasee .site-footer {
-  --ink: #fff; --ink-soft: color-mix(in srgb, #fff 92%, var(--p3)); --line: color-mix(in srgb, #fff 55%, var(--p3));
+  --ink: var(--text); --ink-soft: color-mix(in srgb, var(--text) 85%, var(--p3)); --line: color-mix(in srgb, var(--text) 30%, var(--p3));
 }
 .d-rosasee .site-footer { --bg: var(--p3); }
-.d-rosasee .site-footer a:hover { color: var(--p1); }
-.d-rosasee .aud--gruppen { --line: color-mix(in srgb, #fff 55%, var(--p3)); }
+.d-rosasee .site-footer a:hover { color: var(--text); text-decoration: underline; }
+.d-rosasee .aud--gruppen { --line: color-mix(in srgb, var(--text) 30%, var(--p3)); }
 
-/* Überschriften: Rot/Pink auf Creme/Weiß, Weiß auf Fotos */
+/* Überschriften: Koralle auf Creme/Weiß, Weiß auf Fotos */
 .d-rosasee .h2 { color: var(--p4); }
 
-/* Auf Blau ist Pink schwer lesbar → dort alles Weiß (Überschriften, Labels, Nummern, Umriss-Buttons, Icons) */
-.d-rosasee .sec--alt, .d-rosasee .aud--gruppen, .d-rosasee .site-footer { --num: #fff; color: #fff; }
+/* Auf Blau ist Koralle schwer lesbar → dort alles dunkel (Überschriften, Labels, Nummern, Umriss-Buttons, Icons) */
+.d-rosasee .sec--alt, .d-rosasee .aud--gruppen, .d-rosasee .site-footer { --num: var(--text); color: var(--text); }
 .d-rosasee .sec--alt .h2, .d-rosasee .aud--gruppen .h2,
 .d-rosasee .sec--alt .eyebrow, .d-rosasee .aud--gruppen .eyebrow, .d-rosasee .site-footer .eyebrow,
 .d-rosasee .sec--alt .link-u, .d-rosasee .sec--alt .faq__item summary .i, .d-rosasee .sec--alt .loc__addr .i,
-.d-rosasee .sec--alt .feature .i, .d-rosasee .site-footer .link { color: #fff; }
-.d-rosasee .sec--alt .btn--line, .d-rosasee .aud--gruppen .btn--line { border-color: #fff; color: #fff; }
-.d-rosasee .sec--alt .btn--line:hover, .d-rosasee .aud--gruppen .btn--line:hover { background: #fff; color: var(--p1); border-color: #fff; }
+.d-rosasee .sec--alt .feature .i, .d-rosasee .site-footer .link { color: var(--text); }
+.d-rosasee .sec--alt .btn--line, .d-rosasee .aud--gruppen .btn--line { border-color: var(--text); color: var(--text); }
+.d-rosasee .sec--alt .btn--line:hover, .d-rosasee .aud--gruppen .btn--line:hover { background: var(--text); color: #fff; border-color: var(--text); }
 .d-rosasee .sec--alt .perk, .d-rosasee .sec--alt .rs--grid li, .d-rosasee .sec--alt .faq,
-.d-rosasee .sec--alt .rs--top li, .d-rosasee .sec--alt .rs--rows, .d-rosasee .sec--alt .step { border-top-color: #fff; }
+.d-rosasee .sec--alt .rs--top li, .d-rosasee .sec--alt .rs--rows, .d-rosasee .sec--alt .step { border-top-color: var(--text); }
 .d-rosasee .closing .h2 { color: inherit; }
 
 /* Buttons: Rot/Pink, Hauptbutton als einzige Pill */
 .d-rosasee .hero .btn--primary, .d-rosasee .closing .btn--primary { background: var(--p4); color: #fff; }
 .d-rosasee .hero .btn--primary:hover, .d-rosasee .closing .btn--primary:hover { background: var(--accent-hover); }
-.d-rosasee .btn--line { border-color: var(--p1); color: var(--p1); }
-.d-rosasee .btn--line:hover { background: var(--p1); color: #fff; border-color: var(--p1); }
+.d-rosasee .btn--line { border-color: var(--p4); color: var(--p4); }
+.d-rosasee .btn--line:hover { background: var(--p4); color: #fff; border-color: var(--p4); }
 
 /* Kleinteile */
 .d-rosasee .card__body .eyebrow { color: #fff; }
 .d-rosasee .review__stars { color: var(--p4); }
-.d-rosasee .nav a::after { background: var(--p4); }
+.d-rosasee .nav a::after { background: var(--p1); }
 .d-rosasee .mbar__book { background: var(--p4); color: #fff; }
-.d-rosasee .mbar__tel { background: var(--p1); color: #fff; }
+.d-rosasee .mbar__tel { background: var(--text); color: #fff; }
 .d-rosasee .consent { background: #fff; color: var(--text); border-color: var(--p3); }
-.d-rosasee .consent .btn--ghost { color: var(--p1); }
-.d-rosasee .consent .btn:last-child { background: var(--p1); border-color: var(--p1); color: #fff; }
+.d-rosasee .consent .btn--ghost { color: var(--p4); }

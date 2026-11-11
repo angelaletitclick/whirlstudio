@@ -1,0 +1,67 @@
+/* BUNT POLIERT – Testdesign (11.11.2026), nur über ?design=bunt-poliert.
+   Das Live-Design „bunt“ (Kundenwunsch 05.11.2026: fröhlich & hell) mit denselben Farben, Schriften, Inhalten und demselben Aufbau,
+   aber ohne die Vorlagen-Merkmale: keine Überzeilen über Überschriften, kein Blob, kein schräges Foto, keine Farbpunkte,
+   kein Zwei-Farben-Verlauf, keine dicke Farbkante auf runden Karten, weniger Pillen.
+   Farben mit fester Aufgabe: Beere = Buchen, Petrol = Pärchen, Flieder = Mädelsabend & Gruppen, Gelb nur im Dunkeln.
+   Schriften wie bunt (DM Serif Display + DM Sans aus base.css). Lädt nach base.css, ohne layout-ed.css. */
+
+:root {
+  /* Farben exakt wie theme-bunt.css */
+  --bg: #fff8f5; --bg-alt: #fdeef4; --bg-lilac: #f1eafc; --bg-sun: #fff3d6; --bg-teal: #e3f3f1;
+  --ink: #2b1630; --ink-soft: #6e5a70; --line: #ecd9e3;
+  --dark-bg: #3a0f2e; --dark-ink: #fff3f8; --dark-soft: #e2bfd3; --dark-line: #5a2449;
+  --accent: #8e1b5f; --accent-ink: #fff; --accent-hover: #6d1248;
+  --c2: #138483; --c3: #ffc24b; --c4: #ff7b5c; --c5: #a98be8;
+  /* Textfarben der Zielgruppen (dunkel genug für Schrift auf hellem Grund) */
+  --paare: #0f6f6e; --gruppen: #6a43c7;
+}
+
+/* ---------- Keine Überzeilen über Überschriften ---------- */
+.d-bunt-poliert .hero .eyebrow, .d-bunt-poliert .intro__text > .eyebrow, .d-bunt-poliert .aud__text > .eyebrow,
+.d-bunt-poliert .shead > .eyebrow, .d-bunt-poliert .closing .eyebrow, .d-bunt-poliert .card__body .eyebrow { display: none; }
+/* Wo Labels bleiben (Preiskarten, Kalender-Übersicht, Footer, Hausregeln): ohne Versalien */
+.d-bunt-poliert .eyebrow { text-transform: none; letter-spacing: .01em; }
+.d-bunt-poliert p, .d-bunt-poliert .lead { text-wrap: pretty; }
+
+/* ---------- Hero: Fakten als Zeile mit feinen Trennern statt Pillen ---------- */
+.d-bunt-poliert .hero__facts { gap: 0; margin-top: 2.2em; }
+.d-bunt-poliert .hero__facts li { background: none; backdrop-filter: none; border-radius: 0; padding: 2px 18px; }
+.d-bunt-poliert .hero__facts li + li { border-left: 1px solid rgba(255,255,255,.55); }
+@media (max-width: 700px) {
+  .d-bunt-poliert .hero__facts { display: grid; max-width: 320px; margin-inline: auto; border-top: 1px solid rgba(255,255,255,.4); }
+  .d-bunt-poliert .hero__facts li, .d-bunt-poliert .hero__facts li + li { padding: 9px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.4); }
+}
+
+/* ---------- Intro: zwei Fotos ruhig nebeneinander, kein Blob, nichts schräg ---------- */
+.d-bunt-poliert .intro__media { padding: 0; display: grid; grid-template-columns: 3fr 2fr; gap: 12px; align-items: end; }
+.d-bunt-poliert .intro__media::before { display: none; }
+.d-bunt-poliert .intro__img1 { width: 100%; margin: 0; }
+.d-bunt-poliert .intro__img2 { position: static; width: 100%; transform: none; border: 0; border-radius: var(--r); }
+.d-bunt-poliert .intro__img2 img { aspect-ratio: 3 / 4; }
+
+/* ---------- Zielgruppen: Petrol = Pärchen, Flieder = Gruppen ---------- */
+.d-bunt-poliert .aud--paare { background: var(--bg-teal); }
+.d-bunt-poliert .aud--gruppen { background: var(--bg-lilac); }
+.d-bunt-poliert .aud--paare .chips li, .d-bunt-poliert .aud--paare .chips li:nth-child(n) { color: var(--paare); }
+.d-bunt-poliert .aud--gruppen .chips li, .d-bunt-poliert .aud--gruppen .chips li:nth-child(n) { color: var(--gruppen); }
+.d-bunt-poliert .aud--paare .h2 { color: var(--paare); }
+.d-bunt-poliert .aud--gruppen .h2 { color: var(--gruppen); }
+
+/* ---------- Vorteile: Pastellflächen bleiben, Farbpunkte fallen weg ---------- */
+.d-bunt-poliert .perk::before, .d-bunt-poliert .perk:nth-child(n)::before { display: none; }
+
+/* ---------- Ausstattung: Haken einheitlich in Beere ---------- */
+.d-bunt-poliert .feature .i, .d-bunt-poliert .feature:nth-child(n) .i { background: var(--accent); color: #fff; }
+
+/* ---------- Preise: keine dicke Farbkante auf runden Karten ---------- */
+.d-bunt-poliert .price, .d-bunt-poliert .price:nth-child(2) { border-top: 0; }
+
+/* ---------- Abschluss: eine Farbe statt Beere-Petrol-Verlauf ---------- */
+.d-bunt-poliert .closing__bg::after { background: rgba(58,15,46,.78); }
+.d-bunt-poliert .closing .h2 { max-width: 26ch; }
+
+/* ---------- Die drei Hauptgründe haben keine Reihenfolge: ohne Nummern ---------- */
+.d-bunt-poliert .rs--top .rs__n { display: none; }
+
+/* ---------- FAQ und Anfahrt liegen beide auf Rosa: Abstand nicht doppeln ---------- */
+.d-bunt-poliert #faq + #anfahrt { padding-top: 0; }

@@ -29,6 +29,8 @@ return [
     'times' => [
         'checkin'  => '17–22 Uhr',
         'checkout' => 'bis 10 Uhr',
+        // Kurzform für den Zeitstempel im Design „fotoautomat“ (Check-in ab 17, Check-out bis 10)
+        'stamp'    => '17:00 → 10:00',
     ],
 
     // Kundenfeedback 05.11.2026: "bis zu 8 Personen buchbar".
@@ -36,6 +38,8 @@ return [
     'capacity' => [
         'max'   => 8,
         'label' => 'bis zu 8 Personen',
+        // Bis der Aufpreis geklärt ist: ehrlich auf Anfrage verweisen. TODO: Kunde nennt Preis ab der 3. Person.
+        'extra_note' => 'Preis ab der 3. Person bitte telefonisch anfragen',
     ],
 
     // TODO: Preise bestätigen (Meta-Beschreibung der alten Preisseite nennt "ab € 379.-")
@@ -66,20 +70,25 @@ return [
         'title' => 'Auch auf Booking.com',
     ],
 
+    // Hero-Fakten (Start- und Zielgruppenseiten): die drei Unterschiede zu Private Spas im Stundentakt.
+    // Fakten aus perks/facts/studios. TODO: Kunde gibt Formulierung frei.
+    'hero_facts' => ['Die ganze Nacht, Check-out bis 10 Uhr', 'Über 100 qm nur für euch', 'Eigene Getränke & Deko erlaubt'],
+
     'hero' => [
         'eyebrow' => 'Private Spa · Hamburg',
         'title'   => 'Studios mit Whirlpool in Hamburg',
         'script'  => 'Zeit für euch',
-        // TODO: Kunde gibt neuen Lead frei (alt: "Überrasche deinen Lieblingsmenschen mit einer Übernachtung in einem Apartment mit eigenem Whirlpool.")
-        'lead'    => 'Für Pärchen, Mädelsabende und Gruppen: eine Übernachtung in einem Apartment mit eigenem Whirlpool.',
+        // Vom Kunden/Agentur geliefert 11.11.2026
+        'lead'    => 'Für romantische Auszeiten zu zweit, unvergessliche Mädelsabende und gemeinsame Momente mit Freunden – mit privatem Whirlpool und Übernachtung.',
     ],
 
     'intro' => [
         'eyebrow' => 'Noch kein Geschenk?',
         'title'   => 'Euer privates Spa – mitten in Hamburg',
+        // Absätze vom Kunden/Agentur geliefert 11.11.2026
         'paras'   => [
-            'Erlebt Hamburg in eurem Private Spa – entweder für nur eine Übernachtung oder für einen längeren Aufenthalt. Zur Auswahl stehen die beiden voll ausgestatteten Apartments PRETTY und VIBE.',
-            'Ob als Geburtstagsüberraschung, zum Jahrestag, für eine spontane Kinderauszeit, einen aufregenden Antrag oder den nächsten Mädelsabend – die beiden Studios PRETTY und VIBE bieten ein Refugium für Entspannung. Und das mitten in Hamburg.',
+            'Erlebt eine besondere Auszeit mitten in Hamburg – ob für eine Nacht oder einen längeren Aufenthalt. Mit den beiden liebevoll ausgestatteten Apartments PRETTY und VIBE erwartet euch euer ganz persönlicher Rückzugsort mit eigenem Whirlpool.',
+            'Ob als Geburtstagsüberraschung, zum Jahrestag, für einen romantischen Antrag oder einen unvergesslichen Mädelsabend – hier findet ihr den perfekten Ort für besondere Momente und entspannte Stunden fernab vom Alltag.',
         ],
     ],
 
@@ -97,12 +106,8 @@ return [
             'hero'    => 'ws-01',
             'hero_m'  => 'ws-01',
             'occasions' => ['Geburtstag', 'Jahrestag', 'Kinderauszeit', 'Antrag'],
-            'points'  => [
-                ['title' => 'Nur ihr zwei', 'text' => 'Ferienwohnung statt Hotel – kein Empfang, keine anderen Gäste.'],
-                ['title' => 'Eigener Whirlpool', 'text' => 'Ca. 37 °C, für jeden Gast desinfiziert und mit Frischwasser befüllt.'],
-                ['title' => 'Selbst dekorieren', 'text' => 'Rosen, Ballons, Fotos – für den Antrag oder den Jahrestag dürft ihr die Studios nach euren Wünschen schmücken.'],
-                ['title' => 'Kein Zeitdruck', 'text' => 'Kein Stundentakt: Die Nacht gehört euch, bis zum Check-out am nächsten Morgen.'],
-            ],
+            // „Warum WhirlStudio“ auf /paare: die Liste 'auszeit', diese Punkte zuerst (groß)
+            'first'   => ['Entspannt übernachten', 'Euer privater Rückzugsort', 'Euer eigener Whirlpool', 'Dekoration nach euren Wünschen'],
             'landing' => 'jahrestag',
             'faq'     => ['ankunft', 'inklusive', 'fruehstueck', 'storno'],
         ],
@@ -112,26 +117,26 @@ return [
             'eyebrow' => 'Mädelsabend & Gruppen',
             'title'   => 'Mädelsabend im eigenen Private Spa',
             'lead'    => 'Mit bis zu 8 Personen: Whirlpool, XXL-Couch, große TVs und eine eigene Küche – und niemand sonst.',
+            // Nur für den Hero von /gruppen (Startseite nutzt weiter 'lead'). Vom Kunden/Agentur geliefert 11.11.2026
+            'hero_lead' => 'Whirlpool, XXL-Couch, große TVs und eine eigene Küche. Alles für einen unvergesslichen Abend mit bis zu 8 Personen',
             'image'   => 'ws-17',
             'image_alt' => 'Wohnbereich mit weißer XXL-Couch, Hängesessel und Whirlpool im Studio VIBE',
             'hero'    => 'ws-17',
             'hero_m'  => 'ws-04',
-            'occasions' => ['Mädelsabend', 'Geburtstag', 'Junggesellinnenabschied', 'Freundinnen-Wochenende'], // TODO: Anlässe bestätigen
-            'points'  => [
-                ['title' => 'Bis zu 8 Personen', 'text' => 'Genug Platz für die ganze Runde – auf über 100 qm.'],
-                ['title' => 'Eigene Getränke', 'text' => 'Keine Getränkekarte, keine Getränkepauschale: Bringt mit, was ihr mögt.'],
-                ['title' => 'Selbst dekorieren', 'text' => 'Girlanden, Ballons, Fotowand – dekoriert die Studios, wie ihr wollt.'],
-                ['title' => 'Kein Zeitdruck', 'text' => 'Kein Stundentakt: Ihr bleibt über Nacht, bis zum Check-out am nächsten Morgen.'],
-            ],
+            // „Junggesellinnenabschied“ ausgeblendet, bis der Kunde ihn bestätigt (FAQ: keine Partylocation). TODO: Anlässe bestätigen
+            'occasions' => ['Mädelsabend', 'Geburtstag', 'Freundinnen-Wochenende'],
+            // „Warum WhirlStudio“ auf /gruppen: die Liste 'auszeit', diese Punkte zuerst (groß)
+            'first'   => ['Platz für bis zu 8 Personen', 'Getränke nach eurem Geschmack', 'Dekoration nach euren Wünschen', 'Entspannt übernachten'],
             'landing' => 'maedelsabend',
             'faq'     => ['personen', 'party', 'inklusive', 'ankunft'],
         ],
     ],
 
+    // Vom Kunden/Agentur geliefert 11.11.2026 (zwei Absätze, auf der Seite als ein Absatz unter der Überschrift)
     'studios_intro' => [
         'eyebrow' => 'PRETTY & VIBE',
-        'title'   => '2 Studios mit eigenem Whirlpool',
-        'text'    => 'Jedes Studio hat seinen ganz eigenen Charme … du musst dich vor der Buchung nur für eines entscheiden. Entspannt gemeinsam in eurem privaten Wellness-Spa – auf über 100 qm.',
+        'title'   => 'Zwei Apartments, zwei besondere Erlebnisse',
+        'text'    => 'Jedes Apartment hat seinen eigenen Charakter und Charme. Ihr habt die Wahl zwischen PRETTY und VIBE – beide bieten euch auf über 100 m² viel Raum zum Wohlfühlen und Entspannen. Freut euch auf euer eigenes Wellness-Erlebnis mit privatem Whirlpool und genießt eine Auszeit ganz nach euren Vorstellungen.',
     ],
 
     // Bilder: Dateinummern aus Downloads/Whirl Studio/Fotos → public/img/ws-XX-*.webp
@@ -167,6 +172,7 @@ return [
                 ['Licht', 'individuelle LED-Beleuchtung, 40 LED-Kerzen'],
                 ['WLAN', ''],
             ],
+            // TODO: url führt nur auf die Bezirksseite Hohenfelde, nicht auf PRETTY. Direkten Booking.com-Link der Unterkunft vom Kunden holen.
             'review' => ['score' => '9,6', 'label' => 'Exceptional', 'count' => 12, 'source' => 'Booking.com', 'url' => 'https://www.booking.com/district/de/hamburg/hohenfelde.de.html', 'date' => '02.11.2026'],
         ],
         'vibe' => [
@@ -210,14 +216,34 @@ return [
         ['Kaffee & Tee', 'kostenfrei'],
     ],
 
+    // „Alles für eure Auszeit“ (Startseite, Reihenfolge wie hier, die ersten drei groß) und „Warum WhirlStudio“ (/paare, /gruppen, sortiert nach audiences[...]['first']).
+    // Vom Kunden/Agentur geliefert 11.11.2026. Die Studioseiten nutzen weiter 'perks'.
+    'auszeit' => [
+        'title' => 'Alles für eure Auszeit',
+        'text'  => 'Ein Apartment ganz für euch allein – mit eigenem Whirlpool, viel Privatsphäre und allem, was ihr für eine entspannte Auszeit braucht.',
+        'items' => [
+            ['title' => 'Entspannt übernachten', 'text' => 'Kein Stundentakt und kein Zeitdruck. Genießt eure gemeinsame Auszeit über Nacht bis zum Check-out am nächsten Morgen.'],
+            ['title' => 'Euer privater Rückzugsort', 'text' => 'Keine anderen Gäste, kein Hotelbetrieb – das gesamte Apartment gehört ganz euch.'],
+            ['title' => 'Platz für bis zu 8 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder gemeinsamer Kurztrip mit Freunden – hier ist Platz für eure Lieblingsmenschen.'],
+            ['title' => 'Getränke nach eurem Geschmack', 'text' => 'Bringt eure Lieblingsgetränke einfach selbst mit. Ganz ohne Getränkepauschale oder zusätzliche Kosten.'],
+            ['title' => 'Euer eigener Whirlpool', 'text' => 'Genießt wohltuendes Whirlpool-Wasser bei ca. 37 °C. Für jeden Aufenthalt frisch befüllt und hygienisch aufbereitet.'],
+            ['title' => 'Stilvolle Details', 'text' => 'Liebevoll ausgewählte Dekoration und hochwertige Wohnaccessoires sorgen für ein besonderes Ambiente.'],
+            ['title' => 'Dekoration nach euren Wünschen', 'text' => 'Ob romantische Rosen, festliche Ballons oder Girlanden – gestaltet den Raum ganz nach eurem Geschmack. Bitte haltet lediglich das Whirlpool-Wasser frei von Dekoration.'],
+            ['title' => 'Voll ausgestattete Küche', 'text' => 'Gläser, Geschirr und Kaffeemaschine stehen bereit. Kaffee und Tee sind für euch inklusive.'],
+            ['title' => 'Alles für eine angenehme Nacht', 'text' => 'Frische Handtücher und Bettwäsche liegen für euch bereit. Auch die reguläre Endreinigung ist bereits im Preis enthalten.'],
+            ['title' => 'Persönlicher Check-in', 'text' => 'Die Schlüsselübergabe erfolgt zwischen 17 und 22 Uhr persönlich vor Ort – inklusive einer kurzen Einweisung.'],
+            ['title' => 'Mitten in Hamburg-Hohenfelde', 'text' => 'Ihr findet uns am Mühlendamm 47. Restaurants, Cafés und weitere Möglichkeiten sind bequem zu Fuß erreichbar.'],
+        ],
+    ],
+
     // "Alles, was ihr für eure Auszeit braucht" – Kundenfeedback 05.11.2026
     'perks' => [
-        ['title' => 'Bis zu 8 Personen', 'text' => 'Für Pärchen, Mädelsabende und kleine Gruppen.'],
-        ['title' => 'Keine Getränkepauschale', 'text' => 'Keine Getränkekarte, keine Pauschale – bringt eure Lieblingsgetränke einfach mit.'],
-        ['title' => 'Kein Zeitdruck', 'text' => 'Kein Stundentakt: Ihr bleibt über Nacht, bis zum Check-out am nächsten Morgen.'],
-        // TODO: Welche Deko-Marken genau, in welchem Studio?
-        ['title' => 'Hochwertige Deko', 'text' => 'Ausgesuchte Deko, zum Beispiel von JOOP!'],
-        ['title' => 'Selbst dekorieren', 'text' => 'Ballons, Rosen, Girlanden – dekoriert, wie ihr wollt. Nur bitte nichts ins Whirlpool-Wasser.'],
+        ['title' => 'Platz für bis zu 8 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder Kurztrip mit Freunden – hier könnt ihr eure gemeinsame Zeit genießen.'],
+        // Texte Deko/Getränke vom Kunden/Agentur geliefert 11.11.2026.
+        ['title' => 'Getränke ganz nach eurem Geschmack', 'text' => 'Bringt eure Lieblingsgetränke einfach selbst mit – ganz ohne Getränkepauschale oder zusätzliche Kosten.'],
+        ['title' => 'Eine ganze Nacht für euch', 'text' => 'Keine stundenweise Buchung, kein Zeitdruck. Genießt euren Aufenthalt ganz entspannt bis zum Check-out am nächsten Morgen.'],
+        ['title' => 'Mit Liebe zum Detail', 'text' => 'Sorgfältig ausgewählte Dekoration und hochwertige Markenaccessoires.'],
+        ['title' => 'Eure Deko, euer Stil', 'text' => 'Von romantischen Rosen bis hin zu festlichen Ballons – dekoriert ganz nach euren Vorstellungen. Nur das Whirlpool-Wasser bleibt frei von Dekoration.'],
     ],
 
     'facts' => [
@@ -263,10 +289,19 @@ return [
         'maedelsabend' => ['title' => 'Euer Mädelsabend mit eigenem Whirlpool', 'lead' => 'Bis zu 8 Personen, ein Private Spa nur für euch – mitten in Hamburg.'],
     ],
 
+    // Abschluss der Startseite. Zielgruppen- und Studioseiten nutzen die passende Überschrift aus 'occasions'.
+    // TODO: Kunde gibt Texte frei (Feedback Kritik 11.11.2026: „Birthday“ / „Wellness-Übernachtungs-Abenteuer“ wirken holprig).
     'closing' => [
         'eyebrow' => 'Das perfekte Geschenk zum Birthday',
         'title'   => 'Buche dein Wellness-Übernachtungs-Abenteuer',
     ],
 
+    // Footer-Satz unter dem Logo. TODO: Kunde gibt Text frei.
+    'footer_tagline' => 'Erlebe Hamburg – buche dein Wellness-Übernachtungs-Abenteuer.',
+
+    // Kurzfassung der Hausregeln unter dem Kalender (aus FAQ party/hygiene/hunde/alter, Details in den AGB)
+    'house_rules' => ['Nur die gebuchten Gäste', 'Ruhezeiten einhalten', 'Nichts ins Whirlpool-Wasser', 'Keine Haustiere', 'Ab 18 Jahren'],
+
+    // Volle Fassung (FAQ „party“). Unter dem Kalender steht stattdessen die Kurzfassung 'house_rules'.
     'house_note' => 'Unsere Studios sind Ferienwohnungen und keine Partylocations. Bei Verstoß erfolgt ein sofortiges Hausverbot.',
 ];

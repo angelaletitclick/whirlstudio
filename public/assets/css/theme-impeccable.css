@@ -1,0 +1,194 @@
+/* IMPECCABLE – Testdesign (11.11.2026), nur über ?design=impeccable.
+   Richtung: der helle Private-Spa-Standard, bewusst gewählt, auf dem Niveau von Boutique-Hotel-Seiten.
+   Foto zuerst, Weiß und kühles Hellgrau, ein Akzent aus den Fotos (LED-Blau der Whirlpools) nur für Aktionen und Zahlen.
+   Keine Pastell-Kacheln, Farbpunkte, Blobs, Verlaufsbanner oder Überzeilen über Überschriften.
+   Schriften (lokal, OFL): Bodoni Moda (Überschriften), Hanken Grotesk (Text). Lädt nach base.css, ohne layout-ed.css. */
+
+@font-face { font-family: 'Bodoni Moda'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/bodoni-moda-v28-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Bodoni Moda'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/bodoni-moda-v28-latin-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-600.woff2') format('woff2'); }
+
+:root {
+  /* Flächen: Weiß, kühles Hellgrau. Tinte fast schwarz mit Blaustich. */
+  --bg: #ffffff; --bg-alt: #f3f4f7; --bg-lilac: #f3f4f7; --bg-sun: #ffffff; --bg-teal: #f3f4f7;
+  --ink: #14172b; --ink-soft: #535872; --line: #e2e4ec;
+  --dark-bg: #14172b; --dark-ink: #f5f6fa; --dark-soft: #b9bdd0; --dark-line: #2c3150;
+  /* Akzent: LED-Blau aus den Whirlpool-Fotos (Weiß darauf 8,5:1) */
+  --accent: #2338c9; --accent-ink: #fff; --accent-hover: #1a2a9c;
+  --c2: var(--accent); --c3: #9fb2ff; --c4: var(--accent); --c5: var(--accent);
+  --overlay: linear-gradient(180deg, rgba(10,12,30,.45) 0%, rgba(10,12,30,.2) 30%, rgba(10,12,30,.22) 55%, rgba(10,12,30,.66) 100%);
+
+  --f-head: 'Bodoni Moda', 'Didot', Georgia, serif;
+  --f-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-1: clamp(2.75rem, 6.2vw, 5.75rem);
+  --fs-2: clamp(2rem, 3.6vw, 3.25rem);
+  --fs-3: 1.375rem;
+  --fs-0: 1.0625rem;
+  --fs-s: .875rem;
+
+  --r: 6px; --r-s: 4px;
+  --shadow: none;
+  --sec: clamp(80px, 10vw, 152px);
+}
+
+/* ---------- Grundlagen ---------- */
+.d-impeccable { line-height: 1.65; }
+.d-impeccable .h1, .d-impeccable .h2, .d-impeccable .card__t, .d-impeccable .price__amount, .d-impeccable .step__n, .d-impeccable .script {
+  font-weight: 400; letter-spacing: -.012em; line-height: 1.04;
+}
+.d-impeccable .h3 { font-family: var(--f-body); font-weight: 600; font-size: var(--fs-0); letter-spacing: 0; line-height: 1.35; }
+.d-impeccable .lead { color: var(--ink-soft); }
+/* Keine einzelnen Wörter in der letzten Zeile */
+.d-impeccable p, .d-impeccable .lead, .d-impeccable .hero__lead { text-wrap: pretty; }
+.d-impeccable .h1, .d-impeccable .h2 { text-wrap: balance; }
+/* Keine Überzeilen über Überschriften – die Überschrift trägt sich selbst */
+.d-impeccable .hero .eyebrow, .d-impeccable .intro__text > .eyebrow, .d-impeccable .aud__text > .eyebrow,
+.d-impeccable .shead > .eyebrow, .d-impeccable .closing .eyebrow, .d-impeccable .card__body .eyebrow { display: none; }
+/* Wo Labels bleiben (Preiskarten, Kalender-Übersicht, Footer, Hausregeln): ruhig, klein, ohne Farbe */
+.d-impeccable .eyebrow { font: 600 var(--fs-s)/1.4 var(--f-body); letter-spacing: .06em; color: var(--ink-soft); }
+.d-impeccable .sec--dark .eyebrow, .d-impeccable .site-footer .eyebrow { color: var(--dark-soft); }
+.d-impeccable .link-u { color: var(--accent); }
+
+/* ---------- Buttons: rechteckig mit kleiner Rundung, keine Schatten, kein Hüpfen ---------- */
+.d-impeccable .btn { border-radius: var(--r-s); font: 600 var(--fs-s)/1 var(--f-body); letter-spacing: .02em; border-width: 1px; min-height: 52px; padding: 0 30px; }
+.d-impeccable .btn:hover { transform: none; }
+.d-impeccable .btn--primary { box-shadow: none; }
+.d-impeccable .btn--ghost:hover { background: rgba(255,255,255,.16); }
+.d-impeccable .btn--line { border-color: var(--ink); color: var(--ink); }
+.d-impeccable .btn--line:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.d-impeccable .btn--sm { min-height: 44px; padding: 0 20px; }
+.d-impeccable .link { color: var(--accent); font-weight: 600; }
+
+/* ---------- Header ---------- */
+.d-impeccable .site-header.is-scrolled, .d-impeccable .site-header.is-solid, .d-impeccable.nav-open .site-header { background: rgba(255,255,255,.97); backdrop-filter: none; box-shadow: 0 1px 0 var(--line); }
+.d-impeccable .nav a { font-weight: 500; }
+.d-impeccable .nav a::after { height: 1px; border-radius: 0; background: currentColor; }
+
+/* ---------- Hero: Foto, zentrierte Überschrift, Faktenzeile mit Haarlinien ---------- */
+.d-impeccable .hero__in { text-shadow: 0 1px 24px rgba(0,0,0,.28); }
+/* Am Handy steht der Text mitten im hellen Foto: dort gleichmäßiger abdunkeln */
+@media (max-width: 700px) { .d-impeccable { --overlay: linear-gradient(180deg, rgba(10,12,30,.5) 0%, rgba(10,12,30,.42) 45%, rgba(10,12,30,.72) 100%); } }
+.d-impeccable .hero .h1 { max-width: 16ch; margin-inline: auto; }
+.d-impeccable .hero__lead { font-size: var(--fs-3); max-width: 38ch; }
+.d-impeccable .hero__facts { gap: 0; margin-top: 2.4em; font: 500 var(--fs-s)/1.3 var(--f-body); letter-spacing: .02em; }
+.d-impeccable .hero__facts li { background: none; backdrop-filter: none; border-radius: 0; padding: 4px 20px; }
+.d-impeccable .hero__facts li + li { border-left: 1px solid rgba(255,255,255,.55); }
+@media (max-width: 700px) {
+  .d-impeccable .hero__facts { display: grid; max-width: 320px; margin-inline: auto; border-top: 1px solid rgba(255,255,255,.45); }
+  .d-impeccable .hero__facts li, .d-impeccable .hero__facts li + li { padding: 10px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.45); }
+}
+.d-impeccable .hero__tags a { background: none; backdrop-filter: none; border-radius: 0; padding: 0 0 3px; border-bottom: 1px solid currentColor; }
+
+/* ---------- Intro: zwei Fotos ohne Blob und ohne Schräglage ---------- */
+.d-impeccable .intro__media::before { display: none; }
+.d-impeccable .intro__media { padding: 0; display: grid; grid-template-columns: 3fr 2fr; gap: 8px; align-items: end; }
+.d-impeccable .intro__img1 { width: 100%; margin: 0; }
+.d-impeccable .intro__img2 { position: static; width: 100%; transform: none; border: 0; border-radius: var(--r); }
+.d-impeccable .intro__img2 img { aspect-ratio: 3 / 4; }
+.d-impeccable .intro__text .h2 { margin-bottom: .5em; }
+
+/* ---------- Zielgruppen ---------- */
+/* Flächenwechsel: Intro weiß · Pärchen grau · Gruppen weiß · Studios dunkel */
+.d-impeccable .aud--paare { background: var(--bg-alt); }
+.d-impeccable .aud--gruppen { background: var(--bg); }
+.d-impeccable .aud__media img { box-shadow: none; aspect-ratio: 5 / 4; }
+@media (max-width: 700px) { .d-impeccable .aud .btns { flex-direction: column-reverse; align-items: stretch; } }
+.d-impeccable .chips { gap: 8px; }
+.d-impeccable .chips li, .d-impeccable .chips li:nth-child(n) { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 6px 14px; }
+
+/* ---------- Studios-Abschnitt hell statt Navy (Nutzer: nicht zu dunkel) ---------- */
+.d-impeccable .sec--dark { --bg: #f3f4f7; --ink: #14172b; --ink-soft: #535872; --line: #e2e4ec; }
+/* Flächen wechseln weiter ab: Studios grau · „Alles für eure Auszeit“ weiß */
+.d-impeccable #infos { background: #ffffff; }
+
+/* ---------- Studio-Karten: Signatur-Moment, ruhiger Zoom ---------- */
+.d-impeccable .card::after { background: linear-gradient(180deg, transparent 45%, rgba(10,12,30,.72)); }
+.d-impeccable .card__t { letter-spacing: .02em; }
+.d-impeccable .card__img img { transition: transform 1.6s cubic-bezier(.16,1,.3,1); }
+.d-impeccable .card:hover .card__img img { transform: scale(1.035); }
+.d-impeccable .card .link { color: #fff; }
+
+/* ---------- Bewertung ---------- */
+.d-impeccable .review { box-shadow: none; border: 1px solid var(--line); border-radius: var(--r); }
+.d-impeccable .review:hover { transform: none; border-color: var(--ink-soft); }
+.d-impeccable .review__score { border-radius: var(--r-s) var(--r-s) var(--r-s) 0; }
+
+/* ---------- Vorteile & Fakten: Linien statt Kacheln ---------- */
+.d-impeccable .perks { gap: 0 40px; }
+.d-impeccable .perk, .d-impeccable .perk:nth-child(n), .d-impeccable .sec--alt .perk:nth-child(n) { background: none; border-radius: 0; padding: 22px 0 26px; border-top: 1px solid var(--ink); }
+.d-impeccable .perk::before { display: none; }
+.d-impeccable .fact { border-top: 1px solid var(--line); }
+.d-impeccable .rs__n { color: var(--accent); }
+.d-impeccable .rs--top .rs__n { display: none; } /* die drei Hauptgründe haben keine Reihenfolge; Listen-Varianten A/C/E behalten ihre Nummern */
+.d-impeccable .rs--top li:first-child:nth-last-child(3) { grid-column: auto; }
+@media (min-width: 1000px) {
+  .d-impeccable .rs--top { grid-template-columns: repeat(3, 1fr); }
+  .d-impeccable .rs--top .h2 { font-size: clamp(1.75rem, 2.4vw, 2.25rem); }
+}
+/* „Außerdem“ als echte Zwischenüberschrift statt Label */
+.d-impeccable .rs__more { font: 600 var(--fs-0)/1.35 var(--f-body); text-transform: none; letter-spacing: 0; color: var(--ink); }
+
+/* ---------- Bildstreifen ---------- */
+.d-impeccable .strip { gap: 4px; background: var(--bg); }
+.d-impeccable .slide__cap { border-radius: var(--r-s); box-shadow: none; font-weight: 600; }
+
+/* ---------- Preise: weiße Karten mit Haarlinie ---------- */
+.d-impeccable .sec--sun { background: var(--bg-alt); }
+.d-impeccable .price, .d-impeccable .price:nth-child(2) { box-shadow: none; border: 1px solid var(--line); border-radius: var(--r); }
+.d-impeccable .price:nth-child(2) .eyebrow { color: var(--ink-soft); }
+.d-impeccable .price__amount { color: var(--ink); }
+
+/* ---------- Ablauf: Ziffern statt farbiger Kreise ---------- */
+.d-impeccable .step { border-top: 1px solid var(--line); padding-top: 20px; }
+.d-impeccable .step__n, .d-impeccable .step:nth-child(n) .step__n { display: block; width: auto; height: auto; border-radius: 0; background: none; color: var(--accent); font-size: var(--fs-2); line-height: 1; margin-bottom: 20px; }
+
+/* ---------- FAQ: Linien statt Boxen ---------- */
+.d-impeccable .faq { gap: 0; border-top: 1px solid var(--line); }
+.d-impeccable .faq__item, .d-impeccable .sec:not(.sec--alt):not(.sec--lilac) .faq__item { background: none; border-radius: 0; border-bottom: 1px solid var(--line); }
+.d-impeccable .faq__item summary { padding: 20px 0; font-weight: 600; }
+.d-impeccable .faq__a { padding: 0 48px 22px 0; }
+
+/* FAQ und Anfahrt liegen beide auf Grau: Abstand nicht doppeln */
+.d-impeccable #faq + #anfahrt { padding-top: 0; }
+
+/* ---------- Abschluss: ruhige, flache Abdunklung statt Verlauf ---------- */
+.d-impeccable .closing__bg::after { background: linear-gradient(180deg, rgba(14,16,34,.22) 0%, rgba(14,16,34,.48) 100%); }
+.d-impeccable .closing .h2 { max-width: 24ch; }
+
+/* ---------- Ausstattung: Haken ohne Farbkreis ---------- */
+.d-impeccable .features { gap: 0 40px; }
+.d-impeccable .feature { background: none; border-radius: 0; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.d-impeccable .feature .i, .d-impeccable .feature:nth-child(n) .i { background: none; color: var(--accent); padding: 0; }
+
+/* ---------- Slider ---------- */
+.d-impeccable .slider__ui { border-radius: var(--r); box-shadow: none; }
+.d-impeccable .slider__btn { border-radius: var(--r-s); }
+
+/* ---------- Buchung ---------- */
+.d-impeccable .booking__info p { border: 1px solid var(--line); border-radius: var(--r); }
+.d-impeccable .booking__frame { box-shadow: none; border: 1px solid var(--line); border-radius: var(--r); }
+
+/* ---------- Landingpage ---------- */
+.d-impeccable .usp li, .d-impeccable .usp li:nth-child(n) { background: none; border-radius: 0; padding: 22px 0; border-top: 1px solid var(--ink); }
+.d-impeccable .pick__i figcaption { background: linear-gradient(transparent, rgba(10,12,30,.75)); }
+
+/* ---------- Rechtliches ---------- */
+.d-impeccable .notice { border-left: 0; border-radius: var(--r); }
+
+/* ---------- Footer ---------- */
+.d-impeccable .trust { border-radius: var(--r); }
+.d-impeccable .site-footer a:hover, .d-impeccable .site-footer .link { color: var(--c3); }
+
+/* ---------- Mobile Leiste ---------- */
+.d-impeccable .mbar__book { border-radius: var(--r); box-shadow: 0 10px 30px -12px rgba(10,12,30,.55); }
+.d-impeccable .mbar__tel { border-radius: var(--r); background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: 0 10px 30px -12px rgba(10,12,30,.4); }
+
+/* ---------- Consent & Lightbox ---------- */
+.d-impeccable .consent { border-radius: var(--r); }
+.d-impeccable .lightbox__cap { border-radius: var(--r-s); }
+
+/* ---------- Galerie-Varianten ---------- */
+.d-impeccable .gal__nav .slider__btn { border-radius: var(--r-s); }

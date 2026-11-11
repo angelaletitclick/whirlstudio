@@ -10,4 +10,4 @@
   </div>
 <?php endforeach; ?>
 </div>
-<p class="prices__note">Preise <?= e($P['note']) ?>. Buchbar für <?= e($C['capacity']['label']) ?>. Kein Frühstück.</p>
+<p class="prices__note">Preise <?= e($P['note']) ?>. Buchbar für <?= e($C['capacity']['label']) ?> – <?= e($C['capacity']['extra_note']) ?>: <?= tel_link('Preise Telefon', null, 'link-u') ?>. Kein Frühstück.</p>

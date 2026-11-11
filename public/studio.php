@@ -87,6 +87,6 @@ page_start([
   <?php part('studio-cards', ['exclude' => $slug]); ?>
 </section>
 
-<?php part('closing', ['image' => $s['gallery'][2][0] ?? 'ws-35', 'book' => '#kalender']); ?>
+<?php part('closing', ['image' => $s['gallery'][2][0] ?? 'ws-35', 'book' => '#kalender', 'eyebrow' => 'Studio ' . $s['name'], 'title' => $C['occasions']['default']['title']]); ?>
 
-<?php page_end(); ?>
+<?php page_end(['path' => '/' . $slug]); ?>

@@ -50,7 +50,12 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 figure { margin: 0; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 strong { font-weight: 700; }
-:focus-visible { outline: 3px solid var(--c3); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--focus, var(--ink)); outline-offset: 3px; }
+/* Fokusring: auf Hell die Textfarbe (dunkel), auf Fotos weiß, im Header die aktuelle Schriftfarbe */
+.hero, .closing, .card, .pick__i, .slide, .lightbox { --focus: #fff; }
+.site-header { --focus: currentColor; }
+.site-header .btn { --focus: var(--accent); }
+::selection { background: var(--accent); color: var(--accent-ink); }
 .skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 10px 16px; border-radius: 999px; }
 .skip:focus { left: 8px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -163,7 +168,7 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 .hero__tags a:nth-child(2) { opacity: 0; visibility: hidden; animation-name: heroIn; }
 @keyframes heroIn { 0%, 44% { opacity: 0; visibility: hidden; } 50%, 94% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 @keyframes heroOut { 0%, 44% { opacity: 1; visibility: visible; } 50%, 94% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; } }
-@media (max-width: 700px) { .hero__tags { display: none; } }
+@media (max-width: 700px) { .hero__tags { bottom: auto; top: 88px; } .hero__tags a { top: 0; bottom: auto; padding: 6px 12px; } }
 @media (prefers-reduced-motion: reduce) { .hero--fade .hero__slide:nth-child(2), .hero__tags a { animation: none; } }
 .hero__in { padding-top: 130px; padding-bottom: clamp(56px, 9vh, 104px); text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 22px rgba(0,0,0,.35); }
 .hero .eyebrow { color: var(--hero-ink); }
@@ -341,7 +346,8 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 
 /* ---------- Buchung / Smoobu ---------- */
 .booking { max-width: 1040px; margin: 0 auto; }
-.booking__info { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; text-align: center; }
+.booking__info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; text-align: center; font-size: var(--fs-s); line-height: 1.5; }
+@media (max-width: 599px) { .booking__info { grid-template-columns: 1fr 1fr; gap: 8px; } .booking__info p { padding: 12px 10px; } }
 .booking__info p { margin: 0; background: #fff; border-radius: var(--r-s); padding: 14px; }
 .booking__info .eyebrow { margin-bottom: .2em; }
 .booking__frame { position: relative; background: #fff; color: #222; min-height: 560px; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
@@ -349,7 +355,13 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 .booking__loading, .booking__fallback { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 18px; padding: 32px; color: #555; }
 .booking__loading[hidden], .booking__fallback[hidden] { display: none; }
 .booking__fallback { background: #fff; }
-.booking__note { text-align: center; color: var(--ink-soft); font-size: var(--fs-s); margin-top: 20px; }
+.booking__info a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.booking__info strong { display: block; }
+.rules { margin: 24px auto 0; max-width: 720px; text-align: center; color: var(--ink-soft); font-size: var(--fs-s); }
+.rules ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 20px; margin-top: 6px; }
+.rules li::before { content: '·'; margin-right: 8px; color: var(--accent); }
+.rules li:first-child::before { content: none; }
+@media (max-width: 899px) { .booking { padding-bottom: 72px; } }
 
 /* ---------- Landingpage ---------- */
 .usp { display: grid; gap: 12px; grid-template-columns: 1fr; }
@@ -399,6 +411,7 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 /* ---------- Mobile Buchungsleiste ---------- */
 .mbar { position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 40; display: flex; gap: 8px; transform: translateY(140%); transition: transform .35s; margin-bottom: env(safe-area-inset-bottom); }
 .mbar.is-on { transform: none; }
+.mbar.is-on.is-off { transform: translateY(140%); }
 .mbar__book { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; background: var(--accent); color: var(--accent-ink); font: 700 var(--fs-s)/1 var(--f-body); border-radius: 999px; box-shadow: 0 10px 30px -10px rgba(58,15,46,.6); }
 .mbar__book span { font-weight: 400; opacity: .85; }
 .mbar__tel { width: 56px; height: 56px; display: grid; place-items: center; background: var(--c3); color: #2b1630; border-radius: 50%; box-shadow: 0 10px 30px -10px rgba(58,15,46,.6); }
@@ -412,7 +425,6 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 .consent a { text-decoration: underline; }
 .consent__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .consent .btn { min-height: 46px; padding: 0 12px; white-space: normal; text-align: center; line-height: 1.2; }
-.consent .btn:last-child { background: var(--c3); border-color: var(--c3); color: #2b1630; }
 @media (max-width: 600px) { .consent { left: 10px; right: 10px; bottom: 10px; padding: 18px; } }
 
 /* ---------- Lightbox ---------- */
@@ -487,6 +499,8 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 @media (min-width: 760px) { .rs--top { grid-template-columns: 1fr 1fr; } }
 .rs--top li { border-top: 1px solid var(--ink); padding-top: 20px; }
 .rs--top .h2 { margin: 0 0 .3em; }
+/* Drei Hauptpunkte: der erste über die volle Breite, kein verwaister Platz */
+@media (min-width: 760px) { .rs--top li:first-child:nth-last-child(3) { grid-column: 1 / -1; } .rs--top li:first-child:nth-last-child(3) p { max-width: 60ch; } }
 .rs--top p { max-width: 42ch; }
 .rs__more { margin-top: clamp(56px, 7vw, 96px); }
 .rs--small { display: grid; gap: 0 40px; grid-template-columns: 1fr; }

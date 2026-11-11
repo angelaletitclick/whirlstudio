@@ -43,6 +43,11 @@
     } else {
       mbar.classList.add('is-on');
     }
+    // Solange der Kalender sichtbar ist, verdeckt die Leiste sonst dessen Buttons
+    const cal = $('#kalender');
+    if (cal && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => mbar.classList.toggle('is-off', en.isIntersecting)).observe(cal);
+    }
   }
 
   /* ---------- Lightbox ---------- */

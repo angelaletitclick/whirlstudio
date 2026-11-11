@@ -13,14 +13,14 @@
   --f-body: 'Karla', system-ui, sans-serif;
   --head-ls: -.035em;
   /* Palette: genau vier Farben. Alles andere sind Mischungen daraus. */
-  --p1: #c0412b; /* Ziegelrot */
+  --p1: #a53825; /* Ziegelrot (tiefer als #c0412b: 4,6:1 auf Kraftpapier) */
   --p2: #edd6af; /* Kraftpapier */
-  --p3: #5d7a45; /* Moosgrün */
+  --p3: #4c6439; /* Moosgrün (tiefer als #5d7a45: Kraftpapier-Schrift 4,6:1) */
   --p4: #3d2c26; /* Braun */
 
   --bg: color-mix(in srgb, var(--p2) 45%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
-  --ink: var(--p4); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
-  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 45%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --ink: var(--p4); --ink-soft: color-mix(in srgb, var(--ink) 82%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 45%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 85%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
   --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
   --c3: var(--p2);
   --scrim: 61,44,38;

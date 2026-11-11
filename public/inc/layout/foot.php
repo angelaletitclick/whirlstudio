@@ -11,7 +11,7 @@ $a = $C['address'];
     <div class="site-footer__grid">
       <div>
         <p class="logo logo--footer" role="img" aria-label="WhirlStudio Hamburg"><span class="logo__mark"></span></p>
-        <p class="muted">Erlebe Hamburg – buche dein Wellness-Übernachtungs-Abenteuer.</p>
+        <p class="muted"><?= e($C['footer_tagline']) ?></p>
       </div>
       <div>
         <p class="eyebrow">Adresse</p>
@@ -32,7 +32,8 @@ $a = $C['address'];
       </div>
     </div>
     <?php endif; ?>
-    <?php if ($tr): ?>
+    <?php /* Bewertung gilt nur für PRETTY – nicht auf der VIBE-Seite zeigen */ ?>
+    <?php if ($tr && ($meta['path'] ?? '') !== '/vibe'): ?>
     <a class="trust" href="<?= e($tr['url']) ?>" target="_blank" rel="noopener">
       <span class="trust__logo" aria-hidden="true">Booking<span>.com</span></span>
       <span class="trust__score"><?= e($tr['score']) ?></span>

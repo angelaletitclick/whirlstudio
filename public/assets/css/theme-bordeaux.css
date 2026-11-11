@@ -19,11 +19,11 @@
   --p4: #66192c; /* Bordeaux */
 
   --bg: color-mix(in srgb, var(--p2) 30%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
-  --ink: color-mix(in srgb, var(--p4) 80%, #000); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
-  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 35%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --ink: color-mix(in srgb, var(--p4) 80%, #000); --ink-soft: color-mix(in srgb, var(--ink) 82%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 35%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 85%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
   --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
   --c3: var(--p3);
   --scrim: 59,16,32;
-  --block-bg: var(--p1); --block-ink: #fff; --block-hi: var(--p3); --block-btn: var(--p4); --block-btn-ink: #fff;
+  --block-bg: var(--p1); --block-ink: #fff; --block-hi: var(--p2); /* Altrosa statt Gold: 5:1 auf Weinrot */ --block-btn: var(--p4); --block-btn-ink: #fff;
   --num: var(--p1);
 }

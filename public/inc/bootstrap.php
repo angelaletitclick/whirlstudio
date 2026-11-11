@@ -19,6 +19,9 @@ const DESIGNS = [
     'showa'     => 'Showa – retro: Kraftpapier, Moosgrün, Ziegelrot',
     'bordeaux'  => 'Bordeaux – elegant: Weinrot, Altrosa, Gold',
     'rosasee'   => 'Rosasee – Flächen Blau/Creme/Weiß, Akzent Rot/Pink',
+    'impeccable' => 'Impeccable – heller Private-Spa-Standard, Boutique-Hotel-Niveau (11.11.2026)',
+    'fotoautomat' => 'Fotoautomat – Vorhang-Koralle, Fotos als Abzüge, Fotostreifen (11.11.2026)',
+    'bunt-poliert' => 'Bunt poliert – bunt ohne Vorlagen-Merkmale (11.11.2026)',
 ];
 // Designs auf Basis von layout-ed.css
 const DESIGNS_ED = ['editorial', 'flamingo', 'lagune', 'showa', 'bordeaux', 'rosasee'];

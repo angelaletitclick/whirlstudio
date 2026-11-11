@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T00:00:00Z",
+  "title": "Design System: WhirlStudio Hamburg (design \"impeccable\")",
+  "scope": "Applies to ?design=impeccable (body class d-impeccable), theme-impeccable.css layered on base.css. Live default remains 'bunt' until DEFAULT_DESIGN changes in public/inc/bootstrap.php.",
+  "extensions": {
+    "colorMeta": {
+      "led-blue": { "role": "primary", "displayName": "LED Blue", "canonical": "#2338c9", "tonalRamp": ["#0b1150", "#121b78", "#1a2a9c", "#2338c9", "#4a5cdb", "#7b89e6", "#b3bcf1", "#e3e7fb"] },
+      "led-blue-deep": { "role": "primary", "displayName": "Deep LED Blue", "canonical": "#1a2a9c", "tonalRamp": ["#090e3f", "#0f1764", "#1a2a9c", "#2338c9", "#4a5cdb", "#7b89e6", "#b3bcf1", "#e3e7fb"] },
+      "periwinkle-on-navy": { "role": "primary", "displayName": "Periwinkle on Navy", "canonical": "#9fb2ff", "tonalRamp": ["#2a3366", "#3e4c99", "#5a6dcc", "#7a8ff0", "#9fb2ff", "#bccaff", "#d8e0ff", "#eff2ff"] },
+      "paper-white": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff", "tonalRamp": ["#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f3f4f7", "#ffffff"] },
+      "cool-mist": { "role": "neutral", "displayName": "Cool Mist", "canonical": "#f3f4f7", "tonalRamp": ["#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f3f4f7", "#ffffff"] },
+      "ink-navy": { "role": "neutral", "displayName": "Ink Navy", "canonical": "#14172b", "tonalRamp": ["#0a0c1e", "#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f5f6fa"] },
+      "slate-ink": { "role": "neutral", "displayName": "Slate Ink", "canonical": "#535872", "tonalRamp": ["#14172b", "#2c3150", "#3f4460", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f5f6fa"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#e2e4ec", "tonalRamp": ["#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f3f4f7", "#ffffff"] },
+      "navy-ink-light": { "role": "neutral", "displayName": "Navy Ink Light", "canonical": "#f5f6fa", "tonalRamp": ["#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f5f6fa", "#ffffff"] },
+      "navy-soft": { "role": "neutral", "displayName": "Navy Soft", "canonical": "#b9bdd0", "tonalRamp": ["#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f5f6fa", "#ffffff"] },
+      "navy-line": { "role": "neutral", "displayName": "Navy Line", "canonical": "#2c3150", "tonalRamp": ["#0a0c1e", "#14172b", "#2c3150", "#535872", "#8a8ea3", "#b9bdd0", "#e2e4ec", "#f5f6fa"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline, studio card names, price amounts. Bodoni Moda 400." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings and LED-blue step numerals." },
+      "title": { "displayName": "Title", "purpose": "Item titles, FAQ questions, 'Außerdem' subheading. Sans, not Didone." },
+      "lead": { "displayName": "Lead", "purpose": "Hero sub-line only; --fs-0 under 600px." },
+      "body": { "displayName": "Body", "purpose": "Running text, text-wrap: pretty." },
+      "label": { "displayName": "Label", "purpose": "Data labels inside price cards, booking info, house rules, footer columns. Never above a heading." }
+    },
+    "shadows": [
+      { "name": "floating-bar", "value": "0 10px 30px -12px rgba(10,12,30,.55)", "purpose": "Mobile booking button only (phone button uses .4 alpha)." }
+    ],
+    "motion": [
+      { "name": "card-zoom", "value": "transform 1.6s cubic-bezier(.16,1,.3,1); scale(1.035)", "purpose": "Studio card photo on hover; the signature moment." },
+      { "name": "hero-settle", "value": "heroZoom 18s ease-out (scale 1.08 to 1)", "purpose": "Hero photo settles once on load (from base.css)." },
+      { "name": "reveal", "value": "opacity/transform .8s cubic-bezier(.2,.7,.2,1), translateY(24px)", "purpose": "Scroll reveal from base.css; off under prefers-reduced-motion." },
+      { "name": "state-color", "value": "background .2s, color .2s, border-color .2s", "purpose": "Button and link state changes; no translate." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-hero", "value": "700px" },
+      { "name": "cards-two-up", "value": "760px" },
+      { "name": "split", "value": "900px" },
+      { "name": "wide-grid", "value": "1000px" },
+      { "name": "nav-collapse", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Every booking action. LED blue, 4px corners, no shadow, no lift.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Freie Termine ansehen</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 30px; background: #2338c9; color: #fff; border: 1px solid transparent; border-radius: 4px; font: 600 .875rem/1 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .02em; text-decoration: none; transition: background .2s; } .ds-btn-primary:hover { background: #1a2a9c; } .ds-btn-primary:focus-visible { outline: 3px solid #14172b; outline-offset: 3px; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action on light bands and price cards; fills ink on hover.",
+      "html": "<a class=\"ds-btn-line\" href=\"#\">Mehr erfahren</a>",
+      "css": ".ds-btn-line { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 30px; background: transparent; color: #14172b; border: 1px solid #14172b; border-radius: 4px; font: 600 .875rem/1 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .02em; text-decoration: none; transition: background .2s, color .2s; } .ds-btn-line:hover { background: #14172b; color: #fff; } .ds-btn-line:focus-visible { outline: 3px solid #14172b; outline-offset: 3px; }"
+    },
+    {
+      "name": "Occasion Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Outlined occasion tags under audience copy; the only pill shape.",
+      "html": "<ul class=\"ds-chips\"><li>Geburtstag</li><li>Jahrestag</li><li>Antrag</li></ul>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; } .ds-chips li { padding: 6px 14px; border: 1px solid #e2e4ec; border-radius: 999px; color: #14172b; font: 500 .875rem/1.2 'Hanken Grotesk', system-ui, sans-serif; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "description": "Scrolled state: 97% white, 1px hairline, 1px underline on hover.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Für Pärchen</a><a href=\"#\" aria-current=\"page\">Studio PRETTY</a><a class=\"ds-nav-cta\" href=\"#\">Termin buchen</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 28px; padding: 18px 24px; background: rgba(255,255,255,.97); box-shadow: 0 1px 0 #e2e4ec; color: #14172b; font: 500 .875rem/1 'Hanken Grotesk', system-ui, sans-serif; } .ds-nav a { color: inherit; text-decoration: none; position: relative; padding: 8px 0; } .ds-nav a:not(.ds-nav-cta)::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: currentColor; transition: right .3s; } .ds-nav a:hover::after, .ds-nav a[aria-current]::after { right: 0; } .ds-nav .ds-nav-cta { margin-left: auto; background: #2338c9; color: #fff; padding: 0 20px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 4px; font-weight: 600; } .ds-nav .ds-nav-cta:hover { background: #1a2a9c; }"
+    },
+    {
+      "name": "Price Card",
+      "kind": "card",
+      "refersTo": "price-card",
+      "description": "One of the two permitted boxes: white, hairline, 6px, Didone amount.",
+      "html": "<div class=\"ds-price\"><p class=\"ds-price-label\">Unter der Woche</p><p class=\"ds-price-amount\">289 €</p><p class=\"ds-price-sub\">für 1 Übernachtung</p><a class=\"ds-price-btn\" href=\"#\">Freie Termine ansehen</a></div>",
+      "css": ".ds-price { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px; background: #fff; border: 1px solid #e2e4ec; border-radius: 6px; color: #14172b; max-width: 360px; font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-price-label { margin: 0 0 .9em; font: 600 .875rem/1.4 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #535872; } .ds-price-amount { margin: 0; font: 400 clamp(2.75rem, 6.2vw, 5.75rem)/1.04 'Bodoni Moda', Didot, Georgia, serif; letter-spacing: -.012em; } .ds-price-sub { margin: .4em 0 1.8em; } .ds-price-btn { min-height: 52px; padding: 0 30px; display: inline-flex; align-items: center; border: 1px solid #14172b; border-radius: 4px; color: #14172b; text-decoration: none; font: 600 .875rem/1 'Hanken Grotesk', system-ui, sans-serif; transition: background .2s, color .2s; } .ds-price-btn:hover { background: #14172b; color: #fff; }"
+    },
+    {
+      "name": "Studio Card",
+      "kind": "custom",
+      "refersTo": "studio-card",
+      "description": "Signature moment: large 4:5 photo, ink scrim, Didone name, slow 1.035 zoom on hover.",
+      "html": "<a class=\"ds-studio\" href=\"#\"><div class=\"ds-studio-img\"></div><div class=\"ds-studio-body\"><p class=\"ds-studio-t\">PRETTY</p><span class=\"ds-studio-link\">Studio ansehen →</span></div></a>",
+      "css": ".ds-studio { display: block; position: relative; overflow: hidden; width: 320px; border-radius: 6px; color: #fff; text-decoration: none; isolation: isolate; } .ds-studio-img { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #3b4fd6, #14172b); transition: transform 1.6s cubic-bezier(.16,1,.3,1); } .ds-studio:hover .ds-studio-img { transform: scale(1.035); } .ds-studio::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(10,12,30,.72)); } .ds-studio-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; z-index: 1; } .ds-studio-t { margin: 0 0 .4em; font: 400 3.5rem/1.04 'Bodoni Moda', Didot, Georgia, serif; letter-spacing: .02em; } .ds-studio-link { font: 600 .875rem/1 'Hanken Grotesk', system-ui, sans-serif; } .ds-studio:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Hero Fact Row",
+      "kind": "custom",
+      "description": "Facts under the hero buttons, separated by white hairlines instead of pills.",
+      "html": "<ul class=\"ds-facts\"><li>ab 289 € pro Nacht für 2</li><li>Die ganze Nacht</li><li>Über 100 qm</li></ul>",
+      "css": ".ds-facts { display: flex; flex-wrap: wrap; justify-content: center; list-style: none; margin: 0; padding: 24px; background: #2a2f5a; color: #fff; font: 500 .875rem/1.3 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .02em; } .ds-facts li { padding: 4px 20px; } .ds-facts li + li { border-left: 1px solid rgba(255,255,255,.55); }"
+    },
+    {
+      "name": "Ruled Perk",
+      "kind": "custom",
+      "description": "Hairline-instead-of-box list item: strong ink top rule, no fill.",
+      "html": "<div class=\"ds-perk\"><h3>Kein Zeitdruck</h3><p>Kein Stundenhotel: ihr bleibt über Nacht.</p></div>",
+      "css": ".ds-perk { max-width: 280px; padding: 22px 0 26px; border-top: 1px solid #14172b; font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #14172b; } .ds-perk h3 { margin: 0 0 .35em; font: 400 2rem/1.04 'Bodoni Moda', Didot, Georgia, serif; } .ds-perk p { margin: 0; color: #535872; line-height: 1.65; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Boutique Hotel Brochure",
+    "overview": "The category standard for a bright private spa, chosen on purpose and executed at the level of a boutique-hotel website: the real studio photo comes first, then calm white and cool-grey bands, high-contrast Didone headlines and a matter-of-fact grotesk for everything that has to be read. The only colour that is not a neutral is the LED blue of the whirlpools, lifted from the photographs and reserved for what the visitor can do (buttons, links) and for numerals.\n\nDensity is low and the rhythm is generous: full-bleed sections of up to 152px vertical padding alternate white and grey, content sits in a 1240px wrap, and structure is drawn with 1px hairlines instead of tinted tiles. Depth is almost absent; photos with a dark scrim carry all the drama. Motion is slow and singular: the PRETTY/VIBE studio cards zoom gently on hover, and nothing else performs.",
+    "keyCharacteristics": [
+      "Photo first: full-viewport hero photo with centered Didone headline and a hairline fact row.",
+      "Two surfaces only (white, cool grey) plus navy for the footer.",
+      "One accent, LED blue, for actions and numerals only.",
+      "Hairlines instead of boxes; boxes only for price cards and booking info.",
+      "Small, consistent corners (4px controls, 6px containers).",
+      "Flat: no shadows except the mobile booking bar."
+    ],
+    "rules": [
+      { "name": "The Lit Pool Rule", "body": "LED blue appears only on things you can press and on numbers (step numerals). It never fills a surface, tints a section or colours a label.", "section": "colors" },
+      { "name": "The Two Surfaces Rule", "body": "Sections alternate Paper White and Cool Mist; the legacy surface variables (lilac, sun, teal) are aliased to these two. A third light surface is not part of this world. The \"dark\" studios section renders on Cool Mist by user request (\"not too dark\"); navy is kept for the footer.", "section": "colors" },
+      { "name": "The Self-Carrying Headline Rule", "body": "No overline above a heading. The heading states the point on its own; labels exist only to name data inside a box or list.", "section": "typography" },
+      { "name": "The Five Sizes Rule", "body": "Five sizes only (--fs-1, --fs-2, --fs-3, --fs-0, --fs-s), redefined for this world; the single in-place exception is the reasons-grid headline step-down.", "section": "typography" },
+      { "name": "The Flat Floor Rule", "body": "Nothing on the page casts a shadow except the one element that genuinely floats.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do lead every marketing page (home, studio, audience) with a real studio photo under an ink scrim and a centered Didone headline.",
+      "Do alternate Paper White and Cool Mist bands; keep navy for the footer.",
+      "Do reserve LED Blue for buttons, links and numerals.",
+      "Do separate content with 1px hairlines; use a box only for price cards and booking information.",
+      "Do keep corners at 4px for controls and 6px for containers.",
+      "Do keep the studio-card slow zoom (1.035, 1.6s) as the single hover effect with presence."
+    ],
+    "donts": [
+      "Don't put overlines or kickers above headings.",
+      "Don't use pastel tiles, colour dots, blobs, gradient banners or coloured scrims.",
+      "Don't add shadows or hover lifts to buttons, cards or badges; only the mobile booking bar floats.",
+      "Don't introduce a second accent or tint sections with LED Blue.",
+      "Don't use pills or frosted glass for facts, tags or captions; chips are the only pills."
+    ]
+  }
+}

@@ -16,7 +16,7 @@ page_start([
       <div class="hero__slide"><?= img($s['hero'], 'Whirlpool im Studio ' . $s['name'], '100vw', ['eager' => $n === 0, 'lazy' => $n++ === 0, 'mobile' => $s['hero_m']]) ?></div>
     <?php endforeach; ?>
   </div>
-  <div class="hero__tags">
+  <div class="hero__tags" data-stamp="<?= e($C['times']['stamp']) ?>">
     <?php foreach (['vibe', 'pretty'] as $slug): ?><a href="/<?= e($slug) ?>">Im Bild: Studio <?= e($C['studios'][$slug]['name']) ?></a><?php endforeach; ?>
   </div>
   <div class="wrap hero__in">
@@ -29,8 +29,7 @@ page_start([
     </div>
     <ul class="hero__facts">
       <li>ab <?= e(eur($C['prices']['from'])) ?> pro Nacht für 2</li>
-      <li><?= e($C['capacity']['label']) ?></li>
-      <li>Check-in <?= e($C['times']['checkin']) ?></li>
+      <?php foreach ($C['hero_facts'] as $f): ?><li><?= e($f) ?></li><?php endforeach; ?>
     </ul>
   </div>
 </section>
@@ -59,32 +58,23 @@ page_start([
   </div>
 </section>
 
-<?php $GLOBALS['switch_groups'][] = 'liste'; ?>
-<?php if ($liste !== 'o'): /* Test: Listen-Varianten, siehe inc/parts/reasons.php */
-  $seen = array_column($C['perks'], 'title');
-  $all = array_merge($C['perks'], array_values(array_filter($C['facts'], fn($f) => !in_array($f['title'], $seen, true))));
+<?php $GLOBALS['switch_groups'][] = 'liste';
+  // Feste Liste aus content.php ('auszeit'), die ersten drei groß
+  $A = $C['auszeit'];
+  // Standard ('o'): 3 große Punkte + „Außerdem“ (Variante D). Andere Varianten weiter über ?liste= testbar.
+  $lv = $liste === 'o' ? 'd' : $liste;
 ?>
-<section class="sec sec--alt<?= $liste === 'c' ? ' sec--flush' : '' ?>" id="infos">
+<section class="sec sec--alt<?= $lv === 'c' ? ' sec--flush' : '' ?>" id="infos">
   <span id="warum"></span>
   <div class="wrap">
     <?php part('reasons', [
-        'variant' => $liste, 'items' => $all, 'top' => 4, 'image' => 'ws-17',
-        'title' => 'Alles für eure Auszeit', 'text' => 'Eine Ferienwohnung nur für euch – mit eigenem Whirlpool.',
+        'variant' => $lv, 'items' => $A['items'], 'top' => 3, 'image' => 'ws-17',
+        'title' => $A['title'], 'text' => $A['text'],
     ]); ?>
   </div>
 </section>
-<?php else: ?>
-<section class="sec sec--alt" id="infos">
-  <span id="warum"></span>
-  <div class="wrap">
-    <?php part('head', ['title' => 'Alles für eure Auszeit', 'text' => 'Eine Ferienwohnung nur für euch – mit eigenem Whirlpool.']); ?>
-    <?php part('perks'); ?>
-    <?php part('facts'); ?>
-  </div>
-</section>
-<?php endif; ?>
 
-<div class="strip">
+<div class="strip" data-stamp="<?= e($C['times']['stamp'] . ' · WhirlStudio Hamburg') ?>">
   <?php foreach ([['ws-17', 'Wohnzimmer', 'VIBE'], ['pretty-5', 'Esszimmer', 'PRETTY'], ['ws-28', 'Schlafzimmer', 'VIBE'], ['ws-24', 'Küche', 'VIBE']] as [$im, $room, $st]): ?>
     <figure><?= img($im, $room . ' im Studio ' . $st, '(min-width: 640px) 25vw, 50vw') ?><figcaption class="slide__cap"><?= e($room) ?> <span>· <?= e($st) ?></span></figcaption></figure>
   <?php endforeach; ?>
@@ -110,7 +100,7 @@ page_start([
       <?php part('head', ['title' => 'FAQ', 'text' => 'Gut zu wissen']); ?>
       <p class="muted">Noch eine Frage offen? Ruf uns einfach an: <?= tel_link('FAQ Telefon', null, 'link-u') ?></p>
     </div>
-    <?php part('faq', ['keys' => ['personen', 'inklusive', 'getraenke', 'deko', 'ankunft', 'zahlung', 'storno', 'fruehstueck', 'hygiene', 'party', 'hunde', 'alter', 'reinigung']]); ?>
+    <?php part('faq', ['keys' => ['personen', 'inklusive', 'getraenke', 'deko', 'ankunft', 'zahlung', 'storno', 'fruehstueck', 'hygiene', 'party', 'hunde', 'alter']]); ?>
   </div>
 </section>
 

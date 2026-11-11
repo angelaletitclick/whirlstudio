@@ -1,0 +1,59 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "outfit",
+        "createdAt": "2026-11-11T13:27:36.078Z",
+        "reason": "CLAUDE.md: rosasee-Testdesign nutzt Outfit bewusst; DESIGN.md dokumentiert nur ?design=impeccable"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-11T13:27:36.297Z",
+        "reason": "Wegwerf-Skizze der Richtungswahl 11.11.2026, zeigt bewusst fremde Welten"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-11T13:27:36.522Z",
+        "reason": "Wegwerf-Skizze der Richtungswahl 11.11.2026, zeigt bewusst fremde Welten"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-glazier.html"
+        ],
+        "createdAt": "2026-11-11T13:27:36.753Z",
+        "reason": "Wegwerf-Skizze der Richtungswahl 11.11.2026, zeigt bewusst fremde Welten"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "bricolage grotesque",
+        "createdAt": "2026-11-11T13:36:45.737Z",
+        "reason": "Bewusst gewählte Schrift der Testdesigns fotoautomat (Schibsted Grotesk: lagune) (Nutzer 11.11.2026); DESIGN.md dokumentiert nur ?design=impeccable"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "figtree",
+        "createdAt": "2026-11-11T13:36:45.953Z",
+        "reason": "Bewusst gewählte Schrift der Testdesigns fotoautomat (Schibsted Grotesk: lagune) (Nutzer 11.11.2026); DESIGN.md dokumentiert nur ?design=impeccable"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "schibsted grotesk",
+        "createdAt": "2026-11-11T13:36:46.176Z",
+        "reason": "Bewusst gewählte Schrift der Testdesigns fotoautomat (Schibsted Grotesk: lagune) (Nutzer 11.11.2026); DESIGN.md dokumentiert nur ?design=impeccable"
+      }
+    ]
+  }
+}
