@@ -1,0 +1,28 @@
+/* LAGUNE – frisch & ruhig (Richtung Blue Lagoon, The July)
+   Farben aus Palette „終焉 / 郷愁 / 渇望“: Vier Farben: Koralle, Mint, Petrol, Tiefsee.
+   Schriften: Schibsted Grotesk (Headline + Text). Layout: layout-ed.css */
+@font-face { font-family: 'Schibsted Grotesk'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/schibsted-grotesk-v7-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Schibsted Grotesk'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/schibsted-grotesk-v7-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Schibsted Grotesk'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/schibsted-grotesk-v7-latin-600.woff2') format('woff2'); }
+:root {
+  /* Schriften: Schibsted Grotesk (Headline + Text) */
+  --f-head: 'Schibsted Grotesk', system-ui, sans-serif;
+  --f-body: 'Schibsted Grotesk', system-ui, sans-serif;
+  --head-w: 500; --head-ls: -.04em;
+  /* Palette: genau vier Farben. Alles andere sind Mischungen daraus. */
+  --p1: #c4492c; /* Koralle */
+  --p2: #d8ece6; /* Mint */
+  --p3: #2a6f86; /* Petrol */
+  --p4: #173f4c; /* Tiefsee */
+
+  --bg: color-mix(in srgb, var(--p2) 30%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
+  --ink: var(--p4); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 35%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
+  --c3: var(--p2);
+  --scrim: 23,63,76;
+  --block-bg: var(--p3); --block-ink: #fff; --block-hi: var(--p2); --block-btn: var(--p1); --block-btn-ink: #fff;
+  --num: var(--p3);
+}
+.d-lagune .h1, .d-lagune .h2 { line-height: .98; }
+.d-lagune .card__t, .d-lagune .h1--name, .d-lagune .usp strong, .d-lagune .pick__i strong { font-style: normal; }

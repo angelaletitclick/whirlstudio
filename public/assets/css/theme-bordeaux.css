@@ -1,0 +1,29 @@
+/* BORDEAUX – warm & elegant (Richtung The Berkeley, Scarlet)
+   Farben aus Palette „酒红 / 浓酒红 / 古代紫“: vier Farben: Weinrot, Altrosa, Gold, Bordeaux.
+   Schriften: Newsreader (Headline, klassisch) + Hanken Grotesk (Text). Layout: layout-ed.css */
+@font-face { font-family: 'Newsreader'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/newsreader-v26-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Newsreader'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/newsreader-v26-latin-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Newsreader'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/newsreader-v26-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/hanken-grotesk-v12-latin-600.woff2') format('woff2'); }
+:root {
+  /* Schriften: Newsreader (Headline, klassisch) + Hanken Grotesk (Text) */
+  --f-head: 'Newsreader', Georgia, serif;
+  --f-body: 'Hanken Grotesk', system-ui, sans-serif;
+  --head-ls: -.03em;
+  /* Palette: genau vier Farben. Alles andere sind Mischungen daraus. */
+  --p1: #b5003e; /* Weinrot */
+  --p2: #f0dde4; /* Altrosa */
+  --p3: #d3ad78; /* Gold */
+  --p4: #66192c; /* Bordeaux */
+
+  --bg: color-mix(in srgb, var(--p2) 30%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
+  --ink: color-mix(in srgb, var(--p4) 80%, #000); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 35%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
+  --c3: var(--p3);
+  --scrim: 59,16,32;
+  --block-bg: var(--p1); --block-ink: #fff; --block-hi: var(--p3); --block-btn: var(--p4); --block-btn-ink: #fff;
+  --num: var(--p1);
+}

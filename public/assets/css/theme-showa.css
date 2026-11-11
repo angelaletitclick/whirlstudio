@@ -1,0 +1,29 @@
+/* SHOWA – warm & retro (Richtung dddhotel, Austin Motel)
+   Farben aus „配色事典“ (Taishō/Shōwa): vier Farben: Ziegelrot, Kraftpapier, Moosgrün, Braun.
+   Schriften: Fraunces (Headline, weich & retro) + Karla (Text). Layout: layout-ed.css */
+@font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/fraunces-v38-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/fraunces-v38-latin-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/fraunces-v38-latin-600.woff2') format('woff2'); }
+@font-face { font-family: 'Karla'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/karla-v33-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Karla'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/karla-v33-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Karla'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/karla-v33-latin-600.woff2') format('woff2'); }
+:root {
+  /* Schriften: Fraunces (Headline, weich & retro) + Karla (Text) */
+  --f-head: 'Fraunces', Georgia, serif;
+  --f-body: 'Karla', system-ui, sans-serif;
+  --head-ls: -.035em;
+  /* Palette: genau vier Farben. Alles andere sind Mischungen daraus. */
+  --p1: #c0412b; /* Ziegelrot */
+  --p2: #edd6af; /* Kraftpapier */
+  --p3: #5d7a45; /* Moosgrün */
+  --p4: #3d2c26; /* Braun */
+
+  --bg: color-mix(in srgb, var(--p2) 45%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
+  --ink: var(--p4); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 45%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
+  --c3: var(--p2);
+  --scrim: 61,44,38;
+  --block-bg: var(--p3); --block-ink: #fff; --block-hi: var(--p2); --block-btn: var(--p1); --block-btn-ink: #fff;
+  --num: var(--p1);
+}

@@ -1,0 +1,255 @@
+/* GEMEINSAMES LAYOUT für die Test-Designs editorial, flamingo, lagune, showa, bordeaux.
+   Farben kommen aus theme-<name>.css (lädt danach). Ursprünglich: Testdesign nach „Design- & Coding-Guidelines: Wie unsere Websites nicht nach KI aussehen“ (10.11.2026)
+   Nur aktiv mit ?design=<name>. Das Standard-Design „bunt“ nutzt diese Datei nicht.
+   - Schriften (lokal, OFL): Instrument Serif (Headlines, mit Italic), Instrument Sans (Text),
+     Azeret Mono (Preise, Nummern, Labels – 0 ohne Strich/Punkt)
+   - Höchstens ein Pill-Element im Blick (Haupt-Button im Hero bzw. mobile Buchungsleiste), sonst harte Kanten
+   - Keine Schatten, keine Box-in-Box, Trennung über 1px-Linien
+   - Flächige Farben mit leichtem Film-Grain statt Pastell-Verläufen
+   - Asymmetrische Raster (7:5), randabfallende Bilder
+   - Gleiche fünf Größen-Tokens wie base.css, nur andere Werte */
+
+@font-face { font-family: 'Instrument Serif'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/instrument-serif-v5-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/instrument-serif-v5-latin-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/instrument-sans-v4-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/instrument-sans-v4-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/instrument-sans-v4-latin-600.woff2') format('woff2'); }
+@font-face { font-family: 'Azeret Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/azeret-mono-v21-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Azeret Mono'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/azeret-mono-v21-latin-500.woff2') format('woff2'); }
+
+:root {
+  /* Flächen: Papier, Sand, Tinte. Beere bleibt Markenfarbe, Gelb nur als Akzent auf Dunkel. */
+  --bg: #fbfaf7; --bg-alt: #f2efe9; --bg-lilac: #f2efe9; --bg-sun: #fff; --bg-teal: #f2efe9;
+  --ink: #17120f; --ink-soft: #5b524a; --line: #ddd6cb;
+  --dark-bg: #17120f; --dark-ink: #f4f0e8; --dark-soft: #b0a698; --dark-line: #3d352e;
+  --accent: #8e1b5f; --accent-ink: #fff; --accent-hover: #6d1248;
+  --c2: #8e1b5f; --c3: #f0bf4c; --c4: #8e1b5f; --c5: #8e1b5f;
+  /* Abdunklung über Fotos (RGB-Werte) */
+  --scrim: 23,18,15;
+  --overlay: linear-gradient(180deg, rgba(var(--scrim),.45) 0%, rgba(var(--scrim),0) 35%, rgba(var(--scrim),.7) 100%);
+  /* Farbblock Mädelsabend & Gruppen */
+  --block-bg: var(--accent); --block-ink: #fff; --block-hi: var(--c3);
+  --block-btn: var(--dark-bg); --block-btn-ink: var(--dark-ink);
+  /* Preisbeträge, Schritt-Nummern */
+  --num: var(--accent);
+  /* Schnitt der Headline-Schrift */
+  --head-w: 400; --head-ls: -.03em;
+
+  --f-head: 'Instrument Serif', Georgia, serif;
+  --f-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'Azeret Mono', ui-monospace, 'Courier New', monospace;
+
+  /* harte Größenkontraste: große Headlines, bewusst kleiner Fließtext */
+  --fs-1: clamp(3rem, 8.4vw, 7.25rem);
+  --fs-2: clamp(2.25rem, 4.8vw, 4.25rem);
+  --fs-3: 1.375rem;
+  --fs-0: 1rem;
+  --fs-s: .75rem;
+
+  --r: 0; --r-s: 2px;
+  --shadow: none;
+  --sec: clamp(72px, 10vw, 144px);
+  /* Film-Grain, inline (keine externe Datei) */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Grundlagen ---------- */
+.ed { line-height: 1.6; }
+/* Grain nur auf den dunklen und farbigen Flächen – auf Hell wirkt es schmutzig */
+.ed .sec--dark, .ed .aud--gruppen, .ed .site-footer { background-image: var(--grain); }
+.ed .skip { border-radius: 0; }
+
+/* Display-Headlines: eng gesetzt, negatives Tracking */
+.ed .h1, .ed .h2, .ed .card__t, .ed .price__amount { font-weight: var(--head-w); }
+.ed .h1, .ed .h2 { line-height: 1; letter-spacing: var(--head-ls); }
+.ed .h1 { max-width: 14ch; }
+.ed .h3 { font-family: var(--f-body); font-weight: 600; font-size: var(--fs-0); letter-spacing: -.005em; line-height: 1.35; }
+.ed .lead { color: var(--ink-soft); }
+/* Italic als Spannungsbruch */
+.ed .script, .ed .card__t, .ed .h1--name { font-style: italic; letter-spacing: -.02em; }
+.ed .script { color: var(--c3); }
+
+/* Labels ohne Kapsel: Mono, Versalien, weit gesperrt */
+.ed .eyebrow { font: 500 var(--fs-s)/1.4 var(--f-mono); letter-spacing: .15em; color: var(--accent); }
+.ed .sec--dark .eyebrow, .ed .site-footer .eyebrow, .ed .card__body .eyebrow { color: var(--c3); }
+.ed .hero .eyebrow, .ed .closing .eyebrow { color: #fff; }
+
+/* Zahlen in Mono */
+.ed .price__amount, .ed .step__n, .ed .review__score, .ed .trust__score, .ed .slider__count {
+  font-family: var(--f-mono); font-weight: 400; letter-spacing: -.04em;
+}
+.ed .shead--c { text-align: left; }
+.ed .shead--c .lead { margin-inline: 0; }
+.ed .center { justify-content: flex-start; text-align: left; }
+
+/* ---------- Buttons: harte Kanten. Einzige Pill: Haupt-Button im Hero/Abschluss + mobile Leiste ---------- */
+.ed .btn { border-radius: var(--r-s); border-width: 1px; font: 500 var(--fs-s)/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; min-height: 50px; }
+.ed .btn:hover { transform: none; }
+.ed .btn--primary { box-shadow: none; }
+.ed .hero .btn--primary, .ed .closing .btn--primary { border-radius: 999px; }
+.ed .btn--ghost:hover { background: rgba(255,255,255,.12); }
+.ed .btn--sm { min-height: 40px; }
+.ed .link { font: 500 var(--fs-s)/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 6px; }
+
+/* ---------- Header ---------- */
+.ed .site-header.is-scrolled, .ed .site-header.is-solid, .ed.nav-open .site-header { background: color-mix(in srgb, var(--bg) 97%, transparent); backdrop-filter: none; }
+.ed .nav a { font-weight: 500; }
+.ed .nav a::after { height: 1px; border-radius: 0; background: currentColor; }
+@media (max-width: 1100px) { .ed .nav a { letter-spacing: -.02em; } }
+
+/* ---------- Hero ---------- */
+.ed .hero__in { text-shadow: 0 1px 24px rgba(0,0,0,.3); text-align: left; }
+.ed .hero__lead { margin-inline: 0; }
+.ed .hero .btns, .ed .hero__facts { justify-content: flex-start; }
+.ed .hero__lead { font-size: var(--fs-0); max-width: 40ch; }
+.ed .hero__facts { gap: 0; margin-top: 2.6em; font: 400 var(--fs-s)/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,.45); max-width: 720px; }
+.ed .hero__facts li { background: none; backdrop-filter: none; border-radius: 0; padding: 14px 24px 0 0; }
+.ed .hero__facts li + li { padding-left: 24px; border-left: 1px solid rgba(255,255,255,.45); }
+@media (max-width: 600px) {
+  .ed .hero__facts { display: grid; }
+  .ed .hero__facts li, .ed .hero__facts li + li { padding: 10px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.3); }
+}
+.ed .hero__tags a { background: none; backdrop-filter: none; border-radius: 0; padding: 0 0 4px; border-bottom: 1px solid currentColor; font: 400 var(--fs-s)/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Intro: 7:5, überlappende Bilder, keine Rundungen ---------- */
+@media (min-width: 900px) { .ed .intro__grid { grid-template-columns: 7fr 5fr; } }
+.ed .intro__media img { border-radius: 0; }
+.ed .intro__media::before { display: none; }
+.ed .intro__img1 { width: 82%; }
+.ed .intro__img2 { transform: none; border-radius: 0; border-width: 10px; left: -6%; }
+@media (max-width: 899px) { .ed .intro__img2 { left: 0; } }
+
+/* ---------- Zielgruppen: 7:5, Bild randabfallend ---------- */
+.ed .aud--paare { background-color: var(--bg-alt); }
+.ed .aud--gruppen { --bg: var(--block-bg); --ink: var(--block-ink); --ink-soft: color-mix(in srgb, var(--block-ink) 80%, transparent); --line: color-mix(in srgb, var(--block-ink) 35%, transparent); background-color: var(--bg); color: var(--ink); }
+.ed .aud--gruppen .eyebrow { color: var(--block-hi); }
+.ed .aud--gruppen .btn--primary { background: var(--block-btn); color: var(--block-btn-ink); }
+.ed .aud--gruppen .btn--primary:hover { filter: brightness(.88); }
+.ed .aud--gruppen .btn--line { border-color: var(--block-ink); color: var(--block-ink); }
+.ed .aud--gruppen .btn--line:hover { background: var(--block-ink); color: var(--block-bg); }
+.ed .aud { padding: 0; }
+.ed .aud__grid { align-items: stretch; }
+.ed .aud__text { padding: var(--sec) 0; align-self: center; }
+.ed .aud__media img { border-radius: 0; box-shadow: none; height: 100%; aspect-ratio: 4 / 5; }
+@media (min-width: 900px) {
+  .ed .aud__grid { grid-template-columns: 7fr 5fr; }
+  .ed .aud__grid--rev { grid-template-columns: 5fr 7fr; }
+  /* Bild läuft bis an den Bildschirmrand */
+  .ed .aud__media { margin-left: calc(min(0px, (var(--wrap) - 100vw) / 2) - var(--gutter)); }
+  .ed .aud__grid--rev .aud__media { margin-left: 0; margin-right: calc(min(0px, (var(--wrap) - 100vw) / 2) - var(--gutter)); }
+  .ed .aud__media img { aspect-ratio: auto; min-height: 640px; }
+}
+@media (max-width: 899px) {
+  .ed .aud__grid { gap: 0; }
+  .ed .aud__media { margin: 0 calc(-1 * var(--gutter)); }
+  .ed .aud__text { padding: 48px 0 var(--sec); }
+}
+/* Anlässe: Liste mit Linien statt Chips */
+.ed .chips { display: block; margin-top: 1.6em; border-top: 1px solid var(--line); max-width: 460px; }
+.ed .chips li, .ed .chips li:nth-child(n) { background: none; border-radius: 0; color: var(--ink); padding: 10px 0; border-bottom: 1px solid var(--line); font: 400 var(--fs-s)/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Studio-Karten: beide gleich groß ---------- */
+@media (min-width: 760px) {
+  .ed .cards:not(.cards--one) { grid-template-columns: 1fr 1fr; align-items: start; }
+  .ed .cards:not(.cards--one) .card__img img { aspect-ratio: 4 / 5; }
+}
+.ed .card { border-radius: 0; }
+.ed .card::after { background: linear-gradient(180deg, transparent 50%, rgba(var(--scrim),.75)); }
+.ed .card__t { letter-spacing: -.02em; }
+.ed .card .link { color: #fff; }
+
+/* ---------- Bewertung: kantig, ohne Schatten ---------- */
+.ed .review { border-radius: 0; box-shadow: none; background: transparent; color: inherit; border: 1px solid var(--line); padding: 14px 22px 14px 14px; }
+.ed .review:hover { transform: none; border-color: currentColor; }
+.ed .review__score { border-radius: 0; font-size: var(--fs-3); }
+.ed .review__stars { color: var(--c3); }
+
+/* ---------- Vorteile & Fakten: Linien statt Kacheln ---------- */
+.ed .perks { gap: 0 40px; }
+.ed .perk, .ed .perk:nth-child(n), .ed .sec--alt .perk:nth-child(n) { background: none; border-radius: 0; padding: 22px 0 24px; border-top: 1px solid var(--ink); }
+.ed .perk::before { display: none; }
+.ed .fact { border-top: 1px solid var(--line); }
+
+/* ---------- Bildstreifen ---------- */
+.ed .slide__cap { border-radius: 0; box-shadow: none; font: 400 var(--fs-s)/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; background: var(--bg); color: var(--ink); }
+.ed .slide__cap span { color: var(--ink-soft); }
+
+/* ---------- Preise: offene Spalten mit Linien ---------- */
+.ed .prices { max-width: none; gap: 0; }
+.ed .price { background: none; box-shadow: none; border-radius: 0; text-align: left; align-items: flex-start; border: 0; border-top: 1px solid var(--ink); padding: 28px 0 8px; }
+@media (min-width: 700px) {
+  .ed .prices { grid-template-columns: 7fr 5fr; }
+  .ed .price + .price { padding-left: clamp(24px, 4vw, 56px); border-left: 1px solid var(--line); }
+  .ed .price:first-child { padding-right: clamp(24px, 4vw, 56px); }
+}
+.ed .price:nth-child(2) .eyebrow { color: var(--accent); }
+.ed .price__amount { line-height: 1; margin-top: .1em; color: var(--num); }
+.ed .price__label { font-weight: 600; margin-top: .8em; }
+.ed .prices__note { text-align: left; border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* ---------- Ablauf: 1., 2., 3. statt Kreise ---------- */
+.ed .steps { gap: 0 32px; }
+.ed .step { border-top: 1px solid var(--ink); padding-top: 18px; }
+.ed .step__n, .ed .step:nth-child(n) .step__n { display: block; width: auto; height: auto; border-radius: 0; background: none; color: var(--num); font-size: var(--fs-2); line-height: 1; margin-bottom: 28px; }
+.ed .step__n::after { content: '.'; }
+
+/* ---------- FAQ: Linien statt Boxen ---------- */
+.ed .faq { gap: 0; border-top: 1px solid var(--ink); }
+.ed .faq__item, .ed .sec:not(.sec--alt):not(.sec--lilac) .faq__item { background: none; border-radius: 0; border-bottom: 1px solid var(--line); }
+.ed .faq__item summary { padding: 20px 0; font-weight: 500; }
+.ed .faq__a { padding: 0 54px 22px 0; }
+
+/* ---------- Abschluss: flache Farbfläche statt Verlauf ---------- */
+.ed .closing__bg::after { background: rgba(var(--scrim),.68); }
+.ed .closing .h2 { max-width: 16ch; }
+
+/* ---------- Ausstattung: Linien, Haken ohne Kreis ---------- */
+.ed .features { gap: 0 40px; }
+.ed .feature { background: none; border-radius: 0; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.ed .feature .i, .ed .feature:nth-child(n) .i { background: none; color: var(--accent); padding: 0; border-radius: 0; }
+
+/* ---------- Slider ---------- */
+.ed .slider__ui { border-radius: 0; box-shadow: none; padding: 0; background: var(--bg); color: var(--ink); }
+.ed .slider__btn { border-radius: 0; background: var(--ink); }
+.ed .slider__btn:hover { background: var(--accent); }
+
+/* ---------- Buchung ---------- */
+.ed .booking__info { gap: 0; border-top: 1px solid var(--ink); text-align: left; }
+.ed .booking__info p { background: none; border-radius: 0; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); }
+.ed .booking__frame { border-radius: 0; box-shadow: none; border: 1px solid var(--line); }
+.ed .booking__note { text-align: left; }
+
+/* ---------- Landingpage ---------- */
+.ed .usp { gap: 0 32px; }
+.ed .usp li, .ed .usp li:nth-child(n) { background: none; border-radius: 0; padding: 20px 0; border-top: 1px solid var(--ink); }
+.ed .usp strong { font-style: italic; font-size: var(--fs-3); letter-spacing: -.01em; }
+.ed .pick__i { border-radius: 0; }
+.ed .pick__i figcaption { background: rgba(var(--scrim),.6); }
+.ed .pick__i strong { font-style: italic; letter-spacing: -.02em; }
+
+/* ---------- Rechtliches ---------- */
+.ed .notice { border-radius: 0; border-left-width: 1px; }
+
+/* ---------- Footer ---------- */
+.ed .trust { border-radius: 0; }
+.ed .trust__score { border-radius: 0; }
+.ed .site-footer .link { color: var(--c3); }
+.ed .site-footer { font-size: var(--fs-0); }
+.ed .site-footer__legal { font-size: var(--fs-s); }
+@media (min-width: 1101px) { .ed .nav a { font-size: var(--fs-0); } }
+
+/* ---------- Mobile Leiste: Buchen als einzige Pill, Telefon kantig ---------- */
+.ed .mbar__book { box-shadow: none; font: 500 var(--fs-s)/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+.ed .mbar__tel { border-radius: 0; box-shadow: none; background: var(--ink); color: var(--bg); }
+
+/* ---------- Consent & Lightbox ---------- */
+.ed .consent { border-radius: 0; box-shadow: none; border: 1px solid var(--dark-line); }
+.ed .consent__t { font-size: var(--fs-3); }
+.ed .consent .btn { border-radius: 0; }
+.ed .lightbox img { border-radius: 0; }
+.ed .lightbox__cap { border-radius: 0; font: 400 var(--fs-s)/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Galerie-Varianten: Beschriftungen als Mono-Labels ---------- */
+.ed .gal figcaption, .ed .gal__grid span, .ed .gal__bento span, .ed .gal__cap { font-family: var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+.ed .gal__nav .slider__btn { border-radius: 0; background: var(--ink); color: var(--bg); }
+.ed .gal__nav .slider__btn:hover { background: var(--accent); }

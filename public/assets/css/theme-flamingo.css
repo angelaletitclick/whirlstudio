@@ -1,0 +1,33 @@
+/* FLAMINGO – verspielt & poppig (Richtung the-flamingo.de, Austin Motel)
+   Vier Farben (Palette „宝石红 / 富足“): Rubin, Blush, Poolblau, Indigo.
+   Schriften: Bricolage Grotesque (Headline) + Figtree (Text). Layout: layout-ed.css */
+@font-face { font-family: 'Bricolage Grotesque'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/bricolage-grotesque-v9-latin-700.woff2') format('woff2'); }
+@font-face { font-family: 'Bricolage Grotesque'; font-weight: 800; font-style: normal; font-display: swap; src: url('../fonts/bricolage-grotesque-v9-latin-800.woff2') format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/figtree-v9-latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/figtree-v9-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/figtree-v9-latin-600.woff2') format('woff2'); }
+:root {
+  /* Schriften: Bricolage Grotesque (Headline) + Figtree (Text) */
+  --f-body: 'Figtree', system-ui, sans-serif;
+  /* Palette: genau vier Farben. Alles andere sind Mischungen daraus. */
+  --p1: #c7085a; /* Rubin */
+  --p2: #f8d6ca; /* Blush */
+  --p3: #0487ba; /* Poolblau */
+  --p4: #2f2d66; /* Indigo */
+
+  --bg: color-mix(in srgb, var(--p2) 30%, #fff); --bg-alt: var(--p2); --bg-lilac: var(--bg-alt); --bg-teal: var(--bg-alt); --bg-sun: var(--bg);
+  --ink: var(--p4); --ink-soft: color-mix(in srgb, var(--ink) 74%, var(--bg)); --line: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  --dark-bg: var(--p4); --dark-ink: color-mix(in srgb, var(--p2) 25%, #fff); --dark-soft: color-mix(in srgb, var(--dark-ink) 72%, var(--dark-bg)); --dark-line: color-mix(in srgb, var(--dark-ink) 22%, var(--dark-bg));
+  --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
+  --c3: var(--p2);
+  --scrim: 47,45,102;
+  --block-bg: var(--p3); --block-ink: #fff; --block-hi: var(--p2); --block-btn: var(--p1); --block-btn-ink: #fff;
+  --num: var(--p1);
+  --f-head: 'Bricolage Grotesque', system-ui, sans-serif;
+  --head-w: 800; --head-ls: -.045em;
+}
+.d-flamingo .h1, .d-flamingo .h2 { line-height: .95; }
+.d-flamingo .card__t, .d-flamingo .h1--name, .d-flamingo .usp strong, .d-flamingo .pick__i strong { font-style: normal; }
+.d-flamingo .sec--sun .price { border-top-color: var(--ink); }
+.d-flamingo .sec--sun .price + .price { border-left-color: color-mix(in srgb, var(--ink) 25%, transparent); }
+.d-flamingo .sec--sun .prices__note { border-top-color: color-mix(in srgb, var(--ink) 25%, transparent); }

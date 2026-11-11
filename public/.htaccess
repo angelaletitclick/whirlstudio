@@ -1,0 +1,71 @@
+# WhirlStudio – Apache/IONOS
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+ErrorDocument 404 /404.php
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# --- HTTPS + www erzwingen (nicht lokal) ---
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1) [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^whirlstudio\.de$ [NC]
+RewriteRule ^ https://www.whirlstudio.de%{REQUEST_URI} [L,R=301]
+
+# --- interne Dateien sperren ---
+RewriteRule ^inc/ - [F,L]
+
+# --- Weiterleitungen von der alten Jimdo-Seite ---
+RewriteRule ^studios-mit-whirlpool/?$ /#studios [NE,L,R=301]
+RewriteRule ^zimmer-buchen/?$ /buchen [L,R=301]
+RewriteRule ^(%C3%BC|ü)bernachtungspreise/?$ /#preise [NE,L,R=301]
+RewriteRule ^.bernachtungspreise/?$ /#preise [NE,L,R=301]
+RewriteRule ^infos/?$ /#faq [NE,L,R=301]
+RewriteRule ^kontakt/?$ /#kontakt [NE,L,R=301]
+RewriteRule ^(agb|impressum|datenschutz|buchen)/$ /$1 [L,R=301]
+
+# --- .php in der Adresse vermeiden ---
+RewriteCond %{THE_REQUEST} \s/+(index)\.php[\s?] [NC]
+RewriteRule ^ / [L,R=301]
+RewriteCond %{THE_REQUEST} \s/+(buchen|impressum|datenschutz|agb)\.php[\s?] [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+# --- saubere URLs ---
+RewriteRule ^(pretty|vibe)/?$ studio.php?s=$1 [QSA,L]
+RewriteRule ^(paare|gruppen)/?$ zielgruppe.php?z=$1 [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-z0-9-]+)$ $1.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+# Smoobu (Kalender-Iframe + Skript) und Meta Pixel müssen erlaubt sein
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://login.smoobu.com https://connect.facebook.net; frame-src https://login.smoobu.com https://*.smoobu.com https://www.facebook.com; img-src 'self' data: https://www.facebook.com https://*.smoobu.com; connect-src 'self' https://www.facebook.com https://connect.facebook.net https://*.smoobu.com; style-src 'self' 'unsafe-inline' https://login.smoobu.com; font-src 'self' https://login.smoobu.com; form-action 'self' https://*.smoobu.com; base-uri 'self'; frame-ancestors 'self'"
+# Nach erfolgreichem HTTPS-Test aktivieren:
+# Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType text/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json
+</IfModule>
+
+AddType font/woff2 .woff2
+AddType image/webp .webp

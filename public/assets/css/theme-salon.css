@@ -1,0 +1,39 @@
+/* SALON – warm & romantisch (Richtung alpzitt-chalets.de)
+   Creme, Taupe, Karamell. Serifen-Headlines, Schreibschrift-Akzent, zentrierte Heros. */
+:root {
+  --bg: #f5efe7; --bg-alt: #ece2d5; --ink: #4c4945; --ink-soft: #7d746a; --line: #dccfbf;
+  --dark-bg: #3b3430; --dark-ink: #f3ebe0; --dark-soft: #c2b4a3; --dark-line: #574c45;
+  --accent: #a8825a; --accent-ink: #fff; --accent-hover: #946f49;
+  --overlay: linear-gradient(180deg, rgba(40,30,24,.45) 0%, rgba(40,30,24,.15) 40%, rgba(40,30,24,.7) 100%);
+  --f-head: 'Cormorant Garamond', Georgia, serif;
+  --head-w: 400; --head-tt: none; --head-ls: .005em; --head-lh: 1.05;
+  --h1: clamp(2.8rem, 6.6vw, 5.8rem);
+  --btn-radius: 2px; --img-radius: 2px;
+  --hero-align: center;
+}
+.d-salon .eyebrow { color: #8a6640; }
+.d-salon .hero .eyebrow, .d-salon .closing .eyebrow, .d-salon .card__body .eyebrow { color: #fff; }
+.d-salon .hero__in { display: flex; flex-direction: column; align-items: center; }
+.d-salon .hero__lead { margin-inline: auto; }
+.d-salon .hero__facts { justify-content: center; }
+.d-salon .hero { align-items: center; }
+.d-salon .hero__in { padding-bottom: 80px; }
+.d-salon .h2 em, .d-salon .card__t { font-style: italic; }
+.d-salon .shead { text-align: center; }
+.d-salon .shead .lead { margin-inline: auto; }
+.d-salon .split .shead { text-align: left; }
+/* Herz-/Ornament-Trenner unter Abschnittsköpfen */
+.d-salon .shead--c .h2::after, .d-salon .intro .h2::after {
+  content: ''; display: block; width: 72px; height: 12px; margin: .45em auto 0;
+  background: radial-gradient(circle, var(--accent) 2.5px, transparent 3px) center/12px 12px no-repeat,
+              linear-gradient(var(--accent), var(--accent)) left center/28px 1px no-repeat,
+              linear-gradient(var(--accent), var(--accent)) right center/28px 1px no-repeat;
+}
+.d-salon .intro .h2::after { margin-left: 0; }
+.d-salon .card { border-radius: 2px; }
+.d-salon .card__body { text-align: center; }
+.d-salon .card__t { font-size: clamp(2.8rem, 5vw, 4.6rem); }
+.d-salon .price { box-shadow: 0 30px 60px -40px rgba(76,73,69,.35); border-color: transparent; }
+.d-salon .fact__n, .d-salon .step__n { font-style: italic; }
+.d-salon .chips li { border-radius: 999px; }
+.d-salon .site-header.is-scrolled, .d-salon .site-header.is-solid { background: rgba(245,239,231,.96); backdrop-filter: blur(10px); }

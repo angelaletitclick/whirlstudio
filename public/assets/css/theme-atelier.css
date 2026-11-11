@@ -1,0 +1,59 @@
+/* ATELIER – hell & minimal (Richtung anton-cilli.de)
+   Weiß, Sand, Graphit. Dünne Grotesk, heller Marmor, viel Weißraum, Text-Links statt Buttons. */
+:root {
+  --bg: #f8f6f2; --bg-alt: #efebe4; --ink: #2b2a28; --ink-soft: #77726a; --line: #e0dbd2;
+  --dark-bg: #2e2c29; --dark-ink: #f1eee9; --dark-soft: #aaa49a; --dark-line: #46433e;
+  --accent: #9c8b73; --accent-ink: #fff; --accent-hover: #86765f;
+  --overlay: linear-gradient(180deg, rgba(20,20,18,.35) 0%, rgba(20,20,18,0) 40%, rgba(20,20,18,.6) 100%);
+  --f-head: 'Jost', system-ui, sans-serif;
+  --head-w: 300; --head-tt: none; --head-ls: -.02em; --head-lh: 1.02;
+  --h1: clamp(2.8rem, 7vw, 6.4rem);
+  --h2: clamp(2.1rem, 4.4vw, 3.8rem);
+  --eb-ls: .26em; --eb-size: .74rem;
+  --btn-radius: 0; --btn-ls: .22em; --img-radius: 0;
+  --script-display: none;
+  --sec: clamp(88px, 12vw, 170px);
+}
+.d-atelier { font-weight: 300; }
+.d-atelier .logo__word { letter-spacing: -.01em; font-weight: 400; }
+.d-atelier .logo__word span { color: inherit; font-weight: 300; }
+.d-atelier .eyebrow { color: #5f5a53; }
+.d-atelier .hero .eyebrow { color: #fff; }
+/* Buttons: ruhiger, mit Unterstreichung */
+.d-atelier .btn--primary { background: var(--ink); color: var(--bg); }
+.d-atelier .btn--primary:hover { background: var(--accent); }
+.d-atelier .hero .btn--primary, .d-atelier .closing .btn--primary { background: #fff; color: #2b2a28; }
+.d-atelier .hero .btn--primary:hover, .d-atelier .closing .btn--primary:hover { background: var(--accent); color: #fff; }
+.d-atelier .btn--line { border: 0; border-bottom: 1px solid var(--ink); padding: 0 2px; min-height: 40px; }
+.d-atelier .btn--ghost { border-color: rgba(255,255,255,.6); }
+.d-atelier .link { color: inherit; border-bottom: 1px solid currentColor; padding-bottom: 6px; }
+.d-atelier .mbar__book { background: var(--ink); color: var(--bg); }
+/* Karten: Bild oben, Text darunter (kein Overlay) */
+.d-atelier .card { color: var(--ink); }
+.d-atelier .card::after { display: none; }
+.d-atelier .card__img img { aspect-ratio: 5 / 4; }
+.d-atelier .card__body { position: static; padding: 26px 0 0; }
+.d-atelier .card__body .eyebrow { color: #5f5a53; }
+.d-atelier .card__body { text-shadow: none; }
+.d-atelier .card .link { color: var(--ink); }
+.d-atelier #studios .card, .d-atelier #studios .card .link { color: var(--ink); }
+.d-atelier .cards { gap: clamp(28px, 5vw, 80px); }
+.d-atelier .cards .card:nth-child(2) { margin-top: clamp(0px, 8vw, 120px); }
+.d-atelier .cards--one .card:nth-child(2), .d-atelier .cards--one .card { margin-top: 0; }
+/* Studios-Bereich hell statt dunkel */
+.d-atelier #studios { --bg: var(--bg-alt); --ink: #2b2a28; --ink-soft: #77726a; --line: #d9d3c9; }
+.d-atelier .price { border: 0; border-top: 1px solid var(--ink); background: transparent !important; }
+.d-atelier .price__amount { font-weight: 200; }
+.d-atelier .fact__n, .d-atelier .step__n { font-weight: 200; color: var(--ink-soft); }
+.d-atelier .chips li { border: 0; padding: 0; letter-spacing: 0; font-size: 1.05rem; }
+.d-atelier .chips li + li::before { content: '·'; margin-right: 10px; color: var(--accent); }
+.d-atelier .h1--name { font-weight: 200; }
+.d-atelier .intro__img2 { border-color: var(--bg); }
+.d-atelier .review__score { background: transparent; color: var(--ink); border: 1px solid var(--ink); font-weight: 300; }
+.d-atelier .review__stars { color: var(--ink); }
+.d-atelier .site-header.is-scrolled, .d-atelier .site-header.is-solid { background: rgba(248,246,242,.94); backdrop-filter: blur(10px); }
+/* Marmor: helle Flächen bekommen eine feine Aderung (img/marble.webp, erzeugt mit tools/build_marble.py) */
+.d-atelier, .d-atelier #studios, .d-atelier .sec--alt, .d-atelier .price, .d-atelier .usp li {
+  background-image: url('../../img/marble.webp'); background-size: 1800px; background-repeat: repeat;
+}
+.d-atelier .sec--alt, .d-atelier #studios { background-position: 900px 400px; }
