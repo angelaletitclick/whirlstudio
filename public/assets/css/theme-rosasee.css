@@ -76,3 +76,8 @@
 .d-rosasee .mbar__tel { background: var(--text); color: #fff; }
 .d-rosasee .consent { background: #fff; color: var(--text); border-color: var(--p3); }
 .d-rosasee .consent .btn--ghost { color: var(--p4); }
+
+/* Footer in vollem Olympic Blue mit weißer Schrift (Nutzer 12.11.2026: dunkleres Blau), wie der Mädelsabend-Block.
+   Steht am Ende, damit es die dunkle Schrift für helle Blauflächen oben überschreibt. Weiß auf #3974cb 4,6:1. */
+.d-rosasee .site-footer { --bg: var(--p5); --ink: #fff; --ink-soft: #fff; --line: color-mix(in srgb, #fff 40%, var(--p5)); --num: #fff; color: #fff; background-color: var(--p5); }
+.d-rosasee .site-footer .eyebrow, .d-rosasee .site-footer .link, .d-rosasee .site-footer a, .d-rosasee .site-footer a:hover { color: #fff; }

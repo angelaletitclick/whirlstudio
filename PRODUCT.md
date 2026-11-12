@@ -11,7 +11,7 @@ web
 Zwei gleich wichtige Gruppen, beide buchen eine Übernachtung zu einem Anlass:
 
 - **Pärchen:** Geburtstag, Jahrestag, Antrag, spontane Kinderauszeit. Häufig bucht eine Person als Überraschung oder Geschenk für den „Lieblingsmenschen“.
-- **Gruppen bis 8 Personen:** Mädelsabend, Geburtstag, Freundinnen-Wochenende (JGA laut Code noch TODO, vom Kunden zu bestätigen).
+- **Gruppen bis 8 Personen:** Mädelsabend, Geburtstag, Freundinnen-Wochenende, Junggesellinnenabschied (seit 12.11.2026 auf der Seite).
 
 Gäste müssen mindestens 18 Jahre alt sein. Angesprochen wird mit „ihr/euch“, in Geschenk-Kontexten auch mit „du“.
 

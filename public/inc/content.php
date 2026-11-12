@@ -125,8 +125,8 @@ return [
             'image_alt' => 'Wohnbereich mit weißer XXL-Couch, Hängesessel und Whirlpool im Studio VIBE',
             'hero'    => 'ws-17',
             'hero_m'  => 'ws-04',
-            // „Junggesellinnenabschied“ ausgeblendet, bis der Kunde ihn bestätigt (FAQ: keine Partylocation). TODO: Anlässe bestätigen
-            'occasions' => ['Mädelsabend', 'Geburtstag', 'Freundinnen-Wochenende'],
+            // „Junggesellinnenabschied“ seit 12.11.2026 aufgenommen (Freigabe durch die Agentur). Hausregel „keine Partylocation“ gilt weiter.
+            'occasions' => ['Mädelsabend', 'Junggesellinnenabschied', 'Geburtstag', 'Freundinnen-Wochenende'],
             // „Warum WhirlStudio“ auf /gruppen: die Liste 'auszeit', diese Punkte zuerst (groß)
             'first'   => ['Platz für bis zu 8 Personen', 'Getränke nach eurem Geschmack', 'Dekoration nach euren Wünschen', 'Entspannt übernachten'],
             'landing' => 'maedelsabend',
