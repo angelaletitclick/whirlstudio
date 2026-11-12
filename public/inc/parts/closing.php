@@ -5,7 +5,7 @@
     <p class="eyebrow"><?= e($eyebrow ?? $C['closing']['eyebrow']) ?></p>
     <h2 class="h2"><?= e($title ?? $C['closing']['title']) ?></h2>
     <div class="btns btns--c">
-      <?= book_btn('Freie Termine ansehen', 'Abschluss', $book ?? '/buchen#kalender') ?>
+      <?= book_btn('Abschluss', $book ?? '/buchen#kalender') ?>
       <?= tel_link('Abschluss Telefon', icon('phone') . ' Frage? Ruf uns an', 'btn btn--ghost') ?>
     </div>
   </div>

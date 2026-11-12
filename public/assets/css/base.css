@@ -106,12 +106,14 @@ strong { font-weight: 700; }
   white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); }
-.btn--primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 10px 24px -12px var(--accent); }
-.btn--primary:hover { background: var(--accent-hover); }
+/* Buchungs-Button (book_btn): einziger gefüllter Button, überall gleiche Farbe (--book) und gleicher Text.
+   Alle anderen Buttons sind Umriss-Buttons in Schriftfarbe, damit „Termin buchen“ immer heraussticht. */
+.btn--book { background: var(--book, var(--accent)); color: var(--book-ink, var(--accent-ink)); border-color: var(--book, var(--accent)); box-shadow: 0 10px 24px -12px var(--book, var(--accent)); }
+.btn--book:hover { background: var(--book-hover, var(--accent-hover)); border-color: var(--book-hover, var(--accent-hover)); color: var(--book-ink, var(--accent-ink)); }
 .btn--ghost { border-color: currentColor; color: inherit; }
 .btn--ghost:hover { background: rgba(255,255,255,.14); }
-.btn--line { border-color: var(--accent); color: var(--accent); background: transparent; }
-.btn--line:hover { background: var(--accent); color: var(--accent-ink); }
+.btn--line { border-color: currentColor; color: var(--ink); background: transparent; }
+.btn--line:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 .btn--sm { min-height: 44px; padding: 0 20px; }
 .link { display: inline-flex; align-items: center; gap: .5em; font: 700 var(--fs-s)/1 var(--f-body); color: var(--accent); }
 .link .i { transition: transform .25s; }
@@ -412,7 +414,7 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 .mbar { position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 40; display: flex; gap: 8px; transform: translateY(140%); transition: transform .35s; margin-bottom: env(safe-area-inset-bottom); }
 .mbar.is-on { transform: none; }
 .mbar.is-on.is-off { transform: translateY(140%); }
-.mbar__book { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; background: var(--accent); color: var(--accent-ink); font: 700 var(--fs-s)/1 var(--f-body); border-radius: 999px; box-shadow: 0 10px 30px -10px rgba(58,15,46,.6); }
+.mbar__book { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; background: var(--book, var(--accent)); color: var(--book-ink, var(--accent-ink)); font: 700 var(--fs-s)/1 var(--f-body); border-radius: 999px; box-shadow: 0 10px 30px -10px rgba(58,15,46,.6); }
 .mbar__book span { font-weight: 400; opacity: .85; }
 .mbar__tel { width: 56px; height: 56px; display: grid; place-items: center; background: var(--c3); color: #2b1630; border-radius: 50%; box-shadow: 0 10px 30px -10px rgba(58,15,46,.6); }
 .mbar__tel .i { width: 24px; height: 24px; }

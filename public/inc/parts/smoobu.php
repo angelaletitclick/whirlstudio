@@ -15,7 +15,7 @@ $sm = $C['smoobu']; ?>
     <div class="booking__loading" data-smoobu-loading>Kalender wird geladen …</div>
     <div class="booking__fallback" hidden data-smoobu-fallback>
       <p>Der Buchungskalender konnte nicht geladen werden – vielleicht blockiert ein Werbeblocker ihn.</p>
-      <a class="btn btn--primary" href="<?= e($url) ?>" target="_blank" rel="noopener" data-track="InitiateCheckout" data-label="Smoobu Fallback">Buchungskalender öffnen</a>
+      <?= book_btn('Smoobu Fallback', $url, '', ['target' => '_blank', 'rel' => 'noopener']) ?>
     </div>
   </div>
   <div class="rules">

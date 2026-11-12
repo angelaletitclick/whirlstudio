@@ -24,7 +24,7 @@ page_start([
     <h1 class="h1"><?= e($h['title']) ?></h1>
     <p class="hero__lead"><?= e($h['lead']) ?></p>
     <div class="btns">
-      <?= book_btn('Freie Termine ansehen', 'Hero') ?>
+      <?= book_btn('Hero') ?>
       <a class="btn btn--ghost" href="#studios">Studios ansehen</a>
     </div>
     <ul class="hero__facts">

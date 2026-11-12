@@ -13,14 +13,14 @@ const STAGING = true;
 const DESIGN_SWITCH = true;
 const DESIGNS = [
     'bunt'      => 'Bunt – fröhlich & hell',
-    'editorial' => 'Editorial – neutral: Papier, Tinte, Beere',
+    'editorial' => 'Editorial – Pflaume, Petrol, Lavendel (Farben insidertour-hamburg.com)',
     'flamingo'  => 'Flamingo – poppig: Rubin, Blush, Sonnengelb, Indigo',
-    'lagune'    => 'Lagune – frisch: Mint, Petrol, Koralle',
-    'showa'     => 'Showa – retro: Kraftpapier, Moosgrün, Ziegelrot',
+    'lagune'    => 'Lagune – Wada Nr. 178 + Weiß: Ivory Buff, Light Glaucous Blue, Green Blue, Button Orange',
+    'showa'     => 'Showa – Weinrot, Pinkrot, Magenta, Orchidee, Violett',
     'bordeaux'  => 'Bordeaux – elegant: Weinrot, Altrosa, Gold',
-    'rosasee'   => 'Rosasee – Flächen Blau/Creme/Weiß, Akzent Rot/Pink',
+    'rosasee'   => 'Rosasee – Wada Nr. 194: Jasper Red, Muschelrosa, Olympic Blue',
     'impeccable' => 'Impeccable – heller Private-Spa-Standard, Boutique-Hotel-Niveau (11.11.2026)',
-    'fotoautomat' => 'Fotoautomat – Vorhang-Koralle, Fotos als Abzüge, Fotostreifen (11.11.2026)',
+    'fotoautomat' => 'Fotoautomat – Wada Nr. 265: Old Rose, Apricot, Olive, Violettschwarz; Fotos als Abzüge',
     'bunt-poliert' => 'Bunt poliert – bunt ohne Vorlagen-Merkmale (11.11.2026)',
 ];
 // Designs auf Basis von layout-ed.css
@@ -118,12 +118,19 @@ function tel_link(string $label, ?string $text = null, string $class = ''): stri
     );
 }
 
-/** Buchen-Link mit Tracking-Attributen. $href = Ziel (Anker oder Seite). */
-function book_btn(string $label, string $trackLabel, string $href = '/buchen#kalender', string $class = 'btn btn--primary'): string
+/** Buchungs-Button mit Tracking. Überall gleicher Text ($C['book_label']) und gleiche Optik (.btn--book).
+ *  $trackLabel = Herkunft fürs Tracking, $href = Ziel, $extra = zusätzliche Klassen (z. B. 'btn--sm'),
+ *  $attrs = zusätzliche Attribute (z. B. target für den Smoobu-Fallback). */
+function book_btn(string $trackLabel, string $href = '/buchen#kalender', string $extra = '', array $attrs = []): string
 {
+    global $C;
+    $more = '';
+    foreach ($attrs as $k => $v) {
+        $more .= ' ' . e($k) . '="' . e($v) . '"';
+    }
     return sprintf(
-        '<a class="%s" href="%s" data-track="InitiateCheckout" data-label="%s">%s</a>',
-        e($class), e($href), e($trackLabel), e($label)
+        '<a class="btn btn--book%s" href="%s" data-track="InitiateCheckout" data-label="%s"%s>%s</a>',
+        $extra !== '' ? ' ' . e($extra) : '', e($href), e($trackLabel), $more, e($C['book_label'])
     );
 }
 

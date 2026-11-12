@@ -6,7 +6,7 @@
     <p class="price__amount"><?= e(eur($p['amount'])) ?></p>
     <p class="price__label"><?= e($p['label']) ?></p>
     <p class="price__days"><?= e($p['days']) ?></p>
-    <?= book_btn('Freie Termine ansehen', 'Preiskarte ' . ($i + 1), $book ?? '/buchen#kalender', 'btn btn--line') ?>
+    <?= book_btn('Preiskarte ' . ($i + 1), $book ?? '/buchen#kalender') ?>
   </div>
 <?php endforeach; ?>
 </div>

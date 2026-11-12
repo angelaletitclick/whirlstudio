@@ -27,7 +27,7 @@ page_start([
     <h1 class="h1 h1--name"><?= e($s['name']) ?></h1>
     <p class="hero__lead"><?= e($s['tagline']) ?></p>
     <div class="btns">
-      <?= book_btn('Freie Termine ansehen', 'Studio Hero ' . $s['name'], '#kalender') ?>
+      <?= book_btn('Studio Hero ' . $s['name'], '#kalender') ?>
     </div>
     <ul class="hero__facts">
       <li>ab <?= e(eur($C['prices']['from'])) ?> pro Nacht für 2</li>

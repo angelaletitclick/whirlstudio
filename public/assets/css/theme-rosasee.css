@@ -1,8 +1,9 @@
-/* ROSASEE – Kundenpalette (10.11.2026)
-   Flächen:   #84C1D9 Seeblau · #FDEDE5 Creme · Weiß
-   Akzent:    #F25E5E Rot/Pink – nur Überschriften, Labels, Preise, Nummern, Buttons (das dunkle Rot #8C2A2A ist raus, 10.11.2026)
-   Text:      überall neutral dunkel (#222). Weiß auf Seeblau hätte nur 2:1 Kontrast (Kritik 11.11.2026).
-   Akzent als Schrift/Button: tiefere Koralle #C64D4D (4,6:1 auf Weiß/Creme). #F25E5E bleibt für Linien und Flächen.
+/* ROSASEE – eigene Palette des Nutzers (nicht Kundenvorgabe), seit 12.11.2026 auf Basis von
+   Sanzo Wada, Kombination Nr. 194 (PDF-Seite 126), gemessen am Druck: Jasper Red #fe380a · Seashell Pink #fbd8ca · Olympic Blue #3d7dda.
+   Flächen:   Creme (Seashell Pink aufgehellt) · helles Olympic Blue · Weiß; Mädelsabend-Block in vollem Olympic Blue (leicht vertieft, Weiß 4,6:1)
+   Akzent:    Jasper Red – Überschriften, Preise, Nummern, Buttons; als Schrift vertieft auf #c52c08 (4,6:1 auf Creme)
+   Text:      überall neutral dunkel (#222), auf vollem Blau weiß.
+   Vorher (10.11.2026): Seeblau #84C1D9, Creme #FDEDE5, Rot/Pink #F25E5E, Koralle tief #C64D4D.
    Fotos werden neutral (schwarz) abgedunkelt, nicht eingefärbt.
    Schriften: Bodoni Moda (Headline, elegant, mit Kursive) + Outfit (Text). Layout: layout-ed.css */
 @font-face { font-family: 'Bodoni Moda'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/bodoni-moda-v28-latin-regular.woff2') format('woff2'); }
@@ -18,10 +19,11 @@
   /* etwas kleinere Überschriften als in den anderen Designs (gleiche Tokens, kleinere Werte) */
   --fs-1: clamp(2.6rem, 6.2vw, 5.5rem);
   --fs-2: clamp(2rem, 3.6vw, 3.25rem);
-  --p1: #F25E5E; /* Rot/Pink (früher Lila #8C2A2A) */
-  --p2: #FDEDE5; /* Creme */
-  --p3: #84C1D9; /* Seeblau */
-  --p4: #C64D4D; /* Koralle tief – für Schrift und Buttons (#F25E5E hat auf Creme nur 2,8:1) */
+  --p1: #fe380a; /* Jasper Red – Linien, Navigationsstrich */
+  --p2: color-mix(in srgb, #fbd8ca 50%, #fff); /* Seashell Pink aufgehellt = Creme */
+  --p3: color-mix(in srgb, #3d7dda 45%, #fff); /* Olympic Blue hell – Flächen mit dunkler Schrift (8,9:1) */
+  --p4: #c52c08; /* Jasper Red vertieft – Schrift und Buttons (4,6:1 auf Creme) */
+  --p5: #3974cb; /* Olympic Blue, minimal vertieft – volle Fläche mit weißer Schrift (4,6:1) */
   --text: #222;  /* neutraler Fließtext auf Hell */
 
   --bg: var(--p2); --bg-alt: var(--p3); --bg-lilac: var(--p3); --bg-teal: var(--p3); --bg-sun: #fff;
@@ -31,7 +33,7 @@
   --accent: var(--p4); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--p4) 85%, #000);
   --c3: var(--p4);
   --scrim: 0,0,0; /* neutrale Abdunklung, Fotos nicht einfärben */
-  --block-bg: var(--p3); --block-ink: var(--text); --block-hi: var(--text); --block-btn: var(--p4); --block-btn-ink: #fff;
+  --block-bg: var(--p5); --block-ink: #fff; --block-hi: #fff;
   --num: var(--p4);
 }
 /* Kein Grain – klare Flächen */
@@ -46,31 +48,28 @@
 }
 .d-rosasee .site-footer { --bg: var(--p3); }
 .d-rosasee .site-footer a:hover { color: var(--text); text-decoration: underline; }
-.d-rosasee .aud--gruppen { --line: color-mix(in srgb, var(--text) 30%, var(--p3)); }
+.d-rosasee .aud--gruppen { --line: color-mix(in srgb, #fff 45%, var(--p5)); }
 
 /* Überschriften: Koralle auf Creme/Weiß, Weiß auf Fotos */
 .d-rosasee .h2 { color: var(--p4); }
 
 /* Auf Blau ist Koralle schwer lesbar → dort alles dunkel (Überschriften, Labels, Nummern, Umriss-Buttons, Icons) */
-.d-rosasee .sec--alt, .d-rosasee .aud--gruppen, .d-rosasee .site-footer { --num: var(--text); color: var(--text); }
-.d-rosasee .sec--alt .h2, .d-rosasee .aud--gruppen .h2,
-.d-rosasee .sec--alt .eyebrow, .d-rosasee .aud--gruppen .eyebrow, .d-rosasee .site-footer .eyebrow,
+.d-rosasee .sec--alt, .d-rosasee .site-footer { --num: var(--text); color: var(--text); }
+.d-rosasee .aud--gruppen { color: #fff; }
+.d-rosasee .aud--gruppen .h2 { color: #fff; }
+.d-rosasee .sec--alt .h2,
+.d-rosasee .sec--alt .eyebrow, .d-rosasee .site-footer .eyebrow,
 .d-rosasee .sec--alt .link-u, .d-rosasee .sec--alt .faq__item summary .i, .d-rosasee .sec--alt .loc__addr .i,
 .d-rosasee .sec--alt .feature .i, .d-rosasee .site-footer .link { color: var(--text); }
-.d-rosasee .sec--alt .btn--line, .d-rosasee .aud--gruppen .btn--line { border-color: var(--text); color: var(--text); }
-.d-rosasee .sec--alt .btn--line:hover, .d-rosasee .aud--gruppen .btn--line:hover { background: var(--text); color: #fff; border-color: var(--text); }
+.d-rosasee .sec--alt .btn--line { border-color: var(--text); color: var(--text); }
+.d-rosasee .sec--alt .btn--line:hover { background: var(--text); color: #fff; border-color: var(--text); }
 .d-rosasee .sec--alt .perk, .d-rosasee .sec--alt .rs--grid li, .d-rosasee .sec--alt .faq,
 .d-rosasee .sec--alt .rs--top li, .d-rosasee .sec--alt .rs--rows, .d-rosasee .sec--alt .step { border-top-color: var(--text); }
 .d-rosasee .closing .h2 { color: inherit; }
 
-/* Buttons: Rot/Pink, Hauptbutton als einzige Pill */
-.d-rosasee .hero .btn--primary, .d-rosasee .closing .btn--primary { background: var(--p4); color: #fff; }
-.d-rosasee .hero .btn--primary:hover, .d-rosasee .closing .btn--primary:hover { background: var(--accent-hover); }
-.d-rosasee .btn--line { border-color: var(--p4); color: var(--p4); }
-.d-rosasee .btn--line:hover { background: var(--p4); color: #fff; border-color: var(--p4); }
+/* Buttons: Buchen in Rot/Pink (Akzent), alle anderen Umriss in Schriftfarbe */
 
 /* Kleinteile */
-.d-rosasee .card__body .eyebrow { color: #fff; }
 .d-rosasee .review__stars { color: var(--p4); }
 .d-rosasee .nav a::after { background: var(--p1); }
 .d-rosasee .mbar__book { background: var(--p4); color: #fff; }

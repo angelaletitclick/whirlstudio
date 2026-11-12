@@ -27,7 +27,7 @@ $a = $C['address'];
         <p>
           <?php foreach ($C['audiences'] as $au): ?><a href="/<?= e($au['slug']) ?>"><?= e($au['nav']) ?></a><br><?php endforeach; ?>
           <?php foreach ($C['studios'] as $st): ?><a href="/<?= e($st['slug']) ?>">Studio <?= e($st['name']) ?></a><br><?php endforeach; ?>
-          <a href="/buchen" data-track="InitiateCheckout" data-label="Footer">Freie Termine</a>
+          <a href="/buchen" data-track="InitiateCheckout" data-label="Footer"><?= e($C['book_label']) ?></a>
         </p>
       </div>
     </div>
@@ -55,7 +55,7 @@ $a = $C['address'];
 
 <div class="mbar" data-mbar>
   <a class="mbar__book" href="<?= $landing ? '#kalender' : '/buchen#kalender' ?>" data-track="InitiateCheckout" data-label="Mobile Leiste">
-    <span>ab <?= e(eur($C['prices']['from'])) ?></span><strong>Freie Termine</strong>
+    <span>ab <?= e(eur($C['prices']['from'])) ?></span><strong><?= e($C['book_label']) ?></strong>
   </a>
   <?= tel_link('Mobile Telefon', icon('phone') . '<span class="sr">Anrufen</span>', 'mbar__tel') ?>
 </div>

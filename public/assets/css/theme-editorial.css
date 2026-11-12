@@ -1,2 +1,29 @@
-/* EDITORIAL – neutral: Papier, Tinte, Beere. Layout: layout-ed.css (alle Werte dort als Standard). */
-:root { --bg: #fbfaf7; }
+/* EDITORIAL – Farben nach insidertour-hamburg.com (Nutzerwunsch 12.11.2026):
+   Pflaume #760851 · Petrol #178d8d · Lavendel #aa87e3 · Hellrosa #f6e9f7 / #fef4fb · Tinte #141b25.
+   Schriften: Brygada 1918 (Headline, mit Kursive) + Albert Sans (Text), Standard aus layout-ed.css.
+   Kontrast: Petrol als Buttonfläche auf #147a7a vertieft (Weiß 5,1:1 statt 4,0:1);
+   Lavendel als Schrift auf Pflaume aufgehellt (6,5:1). */
+:root {
+  --p1: #760851; /* Pflaume */
+  --p2: #f6e9f7; /* Hellrosa */
+  --p3: #147a7a; /* Petrol (tiefer als #178d8d) */
+  --p4: #aa87e3; /* Lavendel */
+  --p5: #141b25; /* Tinte */
+
+  --bg: #fef4fb; --bg-alt: var(--p2); --bg-lilac: var(--p2); --bg-teal: var(--p2); --bg-sun: #fff;
+  --ink: var(--p5); --ink-soft: color-mix(in srgb, var(--p5) 78%, var(--bg)); --line: color-mix(in srgb, var(--p5) 18%, var(--bg));
+  --dark-bg: var(--p1); --dark-ink: #fef4fb; --dark-soft: color-mix(in srgb, #fef4fb 82%, var(--p1)); --dark-line: color-mix(in srgb, #fef4fb 28%, var(--p1));
+  /* Handeln = Petrol, Marke und Zahlen = Pflaume */
+  --accent: var(--p3); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--p3) 80%, #000);
+  --c2: var(--p1); --c4: var(--p1); --c5: var(--p1);
+  --c3: color-mix(in srgb, var(--p4) 50%, #fff); /* Lavendel hell: Schrift auf Pflaume */
+  --scrim: 20,27,37;
+  --block-bg: var(--p1); --block-ink: #fff; --block-hi: var(--p2);
+  --num: var(--p1);
+}
+/* Labels, Links im Text und Navigationsstrich in Pflaume, Buttons bleiben Petrol */
+.d-editorial .eyebrow, .d-editorial .link-u, .d-editorial .price:nth-child(2) .eyebrow { color: var(--p1); }
+.d-editorial .sec--dark .eyebrow, .d-editorial .site-footer .eyebrow { color: var(--c3); }
+.d-editorial .nav a::after { background: var(--p1); }
+.d-editorial .review__stars { color: var(--p4); }
+.d-editorial ::selection { background: var(--p1); color: #fff; }

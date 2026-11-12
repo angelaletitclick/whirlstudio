@@ -35,7 +35,7 @@ page_start([
     <h1 class="h1"><?= e($au['title']) ?></h1>
     <p class="hero__lead"><?= e($au['hero_lead'] ?? $au['lead']) ?></p>
     <div class="btns">
-      <?= book_btn('Freie Termine ansehen', 'Zielgruppe Hero ' . $au['eyebrow'], $bookHref) ?>
+      <?= book_btn('Zielgruppe Hero ' . $au['eyebrow'], $bookHref) ?>
       <a class="btn btn--ghost" href="#studios">Studios ansehen</a>
     </div>
     <ul class="hero__facts">

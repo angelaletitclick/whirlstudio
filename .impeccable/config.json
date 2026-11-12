@@ -53,6 +53,60 @@
         "value": "schibsted grotesk",
         "createdAt": "2026-11-11T13:36:46.176Z",
         "reason": "Bewusst gewählte Schrift der Testdesigns fotoautomat (Schibsted Grotesk: lagune) (Nutzer 11.11.2026); DESIGN.md dokumentiert nur ?design=impeccable"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "azeret mono",
+        "files": [
+          "public/assets/css/layout-ed.css"
+        ],
+        "createdAt": "2026-11-12T11:32:11.087Z",
+        "reason": "CLAUDE.md: Testdesign-Schriften (layout-ed) ausdrücklich erlaubt; DESIGN.md beschreibt nur das Design impeccable"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "young serif",
+        "files": [
+          "public/assets/css/theme-showa.css"
+        ],
+        "createdAt": "2026-11-12T11:38:25.704Z",
+        "reason": "CLAUDE.md: Testdesign-Schriften erlaubt; Young Serif ersetzt Fraunces auf Nutzerwunsch 12.11.2026"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "karla",
+        "files": [
+          "public/assets/css/theme-showa.css"
+        ],
+        "createdAt": "2026-11-12T11:38:25.782Z",
+        "reason": "CLAUDE.md: Testdesign-Schriften erlaubt; Young Serif ersetzt Fraunces auf Nutzerwunsch 12.11.2026"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "brygada 1918",
+        "files": [
+          "public/assets/css/layout-ed.css"
+        ],
+        "createdAt": "2026-11-12T11:38:25.859Z",
+        "reason": "CLAUDE.md: Testdesign-Schriften erlaubt; ersetzt Instrument auf Nutzerwunsch 12.11.2026"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "albert sans",
+        "files": [
+          "public/assets/css/layout-ed.css"
+        ],
+        "createdAt": "2026-11-12T11:38:25.934Z",
+        "reason": "CLAUDE.md: Testdesign-Schriften erlaubt; ersetzt Instrument auf Nutzerwunsch 12.11.2026"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "newsreader",
+        "files": [
+          "public/assets/css/theme-bordeaux.css"
+        ],
+        "createdAt": "2026-11-12T12:15:02.704Z",
+        "reason": "CLAUDE.md: Testdesign-Schrift von bordeaux, bestand schon vorher"
       }
     ]
   }

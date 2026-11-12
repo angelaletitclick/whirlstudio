@@ -12,7 +12,7 @@
       </ul>
       <div class="btns">
         <a class="btn btn--line" href="/<?= e($au['slug']) ?>">Mehr erfahren</a>
-        <?= book_btn('Freie Termine ansehen', 'Zielgruppe ' . $au['eyebrow'], '/buchen?anlass=' . $au['landing'] . '#kalender') ?>
+        <?= book_btn('Zielgruppe ' . $au['eyebrow'], '/buchen?anlass=' . $au['landing'] . '#kalender') ?>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 /* BORDEAUX – warm & elegant (Richtung The Berkeley, Scarlet)
    Farben aus Palette „酒红 / 浓酒红 / 古代紫“: vier Farben: Weinrot, Altrosa, Gold, Bordeaux.
+   (Wada Nr. 275 am 12.11.2026 getestet und auf Nutzerwunsch verworfen.)
    Schriften: Newsreader (Headline, klassisch) + Hanken Grotesk (Text). Layout: layout-ed.css */
 @font-face { font-family: 'Newsreader'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/newsreader-v26-latin-regular.woff2') format('woff2'); }
 @font-face { font-family: 'Newsreader'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/newsreader-v26-latin-italic.woff2') format('woff2'); }
@@ -24,6 +25,9 @@
   --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
   --c3: var(--p3);
   --scrim: 59,16,32;
-  --block-bg: var(--p1); --block-ink: #fff; --block-hi: var(--p2); /* Altrosa statt Gold: 5:1 auf Weinrot */ --block-btn: var(--p4); --block-btn-ink: #fff;
+  /* Gruppen-Block wie „Zeit zu zweit“: Altrosa mit dunkler Schrift, damit der weinrote Buchungs-Button heraussticht (Nutzer 12.11.2026) */
+  --block-bg: var(--p2); --block-ink: var(--ink); --block-hi: var(--p1);
   --num: var(--p1);
 }
+/* Grain nur auf dunklen Flächen: auf Altrosa wirkt es schmutzig */
+.d-bordeaux .aud--gruppen { background-image: none; }

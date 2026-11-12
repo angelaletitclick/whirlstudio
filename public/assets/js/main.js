@@ -34,6 +34,32 @@
     document.addEventListener('keydown', e => e.key === 'Escape' && close());
   }
 
+  /* ---------- Hero-Überschrift: höchstens zwei Zeilen ----------
+     CSS gibt genug Breite für zwei Zeilen; wo das nicht reicht (Handy, schmale Spalte), wird die Schrift
+     schrittweise verkleinert, bis die Überschrift in zwei Zeilen passt. */
+  const heroH1 = $('.hero .h1');
+  if (heroH1) {
+    const lines = el => {
+      const r = document.createRange();
+      r.selectNodeContents(el);
+      const tops = new Set([...r.getClientRects()].filter(b => b.width > 0).map(b => Math.round(b.top)));
+      return tops.size;
+    };
+    const fit = () => {
+      heroH1.style.fontSize = '';
+      let fs = parseFloat(getComputedStyle(heroH1).fontSize);
+      const min = fs * 0.5;
+      while (lines(heroH1) > 2 && fs > min) {
+        fs *= 0.95;
+        heroH1.style.fontSize = fs + 'px';
+      }
+    };
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    let t;
+    window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 120); });
+  }
+
   /* ---------- Mobile Buchungsleiste: erst nach dem Hero zeigen ---------- */
   const mbar = $('[data-mbar]');
   const hero = $('.hero');

@@ -22,7 +22,7 @@ $tc = ['flamingo' => '#c7085a', 'lagune' => '#173f4c', 'showa' => '#3d2c26', 'bo
 <meta name="theme-color" content="<?= e($tc) ?>">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <?php $ed = in_array($design, DESIGNS_ED, true); ?>
-<?php $pre = ['flamingo' => 'figtree-v9-latin-regular.woff2', 'lagune' => 'schibsted-grotesk-v7-latin-regular.woff2', 'showa' => 'karla-v33-latin-regular.woff2', 'bordeaux' => 'hanken-grotesk-v12-latin-regular.woff2', 'rosasee' => 'outfit-v15-latin-regular.woff2', 'impeccable' => 'hanken-grotesk-v12-latin-regular.woff2', 'fotoautomat' => 'figtree-v9-latin-regular.woff2'][$design] ?? ($ed ? 'instrument-sans-v4-latin-regular.woff2' : 'dm-sans-latin-var.woff2'); ?>
+<?php $pre = ['flamingo' => 'figtree-v9-latin-regular.woff2', 'lagune' => 'schibsted-grotesk-v7-latin-regular.woff2', 'showa' => 'karla-v33-latin-regular.woff2', 'bordeaux' => 'hanken-grotesk-v12-latin-regular.woff2', 'rosasee' => 'outfit-v15-latin-regular.woff2', 'impeccable' => 'hanken-grotesk-v12-latin-regular.woff2', 'fotoautomat' => 'figtree-v9-latin-regular.woff2'][$design] ?? ($ed ? 'albert-sans-v4-latin-regular.woff2' : 'dm-sans-latin-var.woff2'); ?>
 <link rel="preload" href="/assets/fonts/<?= e($pre) ?>" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="<?= e(asset('assets/css/base.css')) ?>">
 <?php if ($ed): ?><link rel="stylesheet" href="<?= e(asset('assets/css/layout-ed.css')) ?>">
@@ -71,12 +71,12 @@ $tc = ['flamingo' => '#c7085a', 'lagune' => '#173f4c', 'showa' => '#3d2c26', 'bo
         <?php foreach ($C['studios'] as $st): ?>
         <li><a href="/<?= e($st['slug']) ?>"<?= $cur('/' . $st['slug']) ?>>Studio <?= e($st['name']) ?></a></li>
         <?php endforeach; ?>
-        <li class="nav__m"><a href="<?= e($bookHref) ?>" data-track="InitiateCheckout" data-label="Menü"<?= $cur('/buchen') ?>>Termin buchen</a></li>
+        <li class="nav__m"><a href="<?= e($bookHref) ?>" data-track="InitiateCheckout" data-label="Menü"<?= $cur('/buchen') ?>><?= e($C['book_label']) ?></a></li>
         <li class="nav__m"><?= tel_link('Menü Telefon', 'Anrufen: ' . e($C['contact']['phone_display'])) ?></li>
       </ul>
     </nav>
     <div class="site-header__cta">
-      <?= book_btn('Termin buchen', 'Header', $bookHref, 'btn btn--primary btn--sm') ?>
+      <?= book_btn('Header', $bookHref, 'btn--sm') ?>
       <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menü öffnen" data-burger><?= icon('menu') ?></button>
     </div>
   </div>

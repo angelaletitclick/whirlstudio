@@ -188,16 +188,16 @@ Small, consistent corners: 4px on buttons, captions, slider buttons and the revi
 ### Buttons
 Rectangular, quiet, decisive.
 - **Shape:** gently squared (4px), 1px border, 52px tall, 30px side padding; small variant 44px / 20px.
-- **Primary:** LED Blue fill, white Hanken 600 at `--fs-s`, letter-spacing .02em.
+- **Primary (booking, `.btn--book`):** LED Blue fill, white Hanken 600 at `--fs-s`, letter-spacing .02em. Always labelled "Termin buchen" (`$C['book_label']`); it is the only filled button on the site, including price cards.
 - **Hover / Focus:** colour change only (Deep LED Blue); no translate, no glow. Focus is base's 3px outline, ink on light, white on photos.
-- **Line:** transparent with Ink Navy border and text; hover fills Ink Navy with white text. Used on price cards and as the secondary choice on light bands.
+- **Line:** transparent with Ink Navy border and text; hover fills Ink Navy with white text. Used for every non-booking action ("Mehr erfahren", maps, gallery, 404).
 - **Ghost (on photos):** white outline, hover adds a 16% white wash.
 
 ### Chips
 - **Style:** transparent, 1px Hairline outline, Ink Navy text, pill, 6px 14px. Occasion tags under the audience copy; one colour, no rotation of hues.
 
 ### Cards / Containers
-- **Price card:** Paper White on Cool Mist, 1px Hairline, 6px, centered; label, Didone amount in ink, line button.
+- **Price card:** Paper White on Cool Mist, 1px Hairline, 6px, centered; label, Didone amount in ink, booking button.
 - **Review badge:** 1px Hairline, 6px; hover only darkens the border to Slate Ink.
 - **Booking info boxes / frame:** 1px Hairline, 6px, no shadow.
 - **Ruled lists (perks, USPs, reasons, facts, features, steps, FAQ):** no fill, no radius; a top rule (Ink Navy for perks/USPs/reasons, Hairline for facts/steps) or bottom rule (features, FAQ). Feature checks are bare LED-blue icons.

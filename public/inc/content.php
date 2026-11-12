@@ -9,6 +9,8 @@
 return [
     'brand' => 'WhirlStudio',
     'claim' => 'Private Spa · Hamburg',
+    // Text aller Buchungs-Buttons (Header, Hero, Preise, Abschluss, mobile Leiste, Menü, Footer). Überall gleich.
+    'book_label' => 'Termin buchen',
 
     'contact' => [
         // Website/Impressum nutzen 0170, AGB § 1 nennt 0162 9675564. TODO: Kunde bestätigt.

@@ -21,10 +21,10 @@
   --accent: var(--p1); --accent-ink: #fff; --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
   --c3: var(--p2);
   --scrim: 47,45,102;
-  --block-bg: var(--p3); --block-ink: #fff; --block-hi: #fff; --block-btn: var(--p1); --block-btn-ink: #fff;
+  --block-bg: var(--p3); --block-ink: #fff; --block-hi: #fff;
   --num: var(--p1);
   --f-head: 'Bricolage Grotesque', system-ui, sans-serif;
-  --head-w: 800; --head-ls: -.045em;
+  --head-w: 800; --head-ls: -.04em;
 }
 .d-flamingo .h1, .d-flamingo .h2 { line-height: .95; }
 .d-flamingo .card__t, .d-flamingo .h1--name, .d-flamingo .usp strong, .d-flamingo .pick__i strong { font-style: normal; }
