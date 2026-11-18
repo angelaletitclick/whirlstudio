@@ -17,17 +17,12 @@ $canonical = SITE_URL . ($meta['path'] ?? '/');
 <meta property="og:url" content="<?= e($canonical) ?>">
 <meta property="og:image" content="<?= e(SITE_URL . '/img/' . ($meta['og'] ?? 'ws-13-1400.webp')) ?>">
 <meta property="og:locale" content="de_DE">
-<?php // Browserleiste in der Hauptfarbe des Designs
-$tc = ['flamingo' => '#c7085a', 'lagune' => '#173f4c', 'showa' => '#3d2c26', 'bordeaux' => '#66192c', 'rosasee' => '#84c1d9', 'impeccable' => '#14172b', 'fotoautomat' => '#c42d52'][$design] ?? '#8e1b5f'; ?>
-<meta name="theme-color" content="<?= e($tc) ?>">
+<meta name="theme-color" content="#8e1b5f">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<?php $ed = in_array($design, DESIGNS_ED, true); ?>
-<?php $pre = ['flamingo' => 'figtree-v9-latin-regular.woff2', 'lagune' => 'schibsted-grotesk-v7-latin-regular.woff2', 'showa' => 'karla-v33-latin-regular.woff2', 'bordeaux' => 'hanken-grotesk-v12-latin-regular.woff2', 'rosasee' => 'outfit-v15-latin-regular.woff2', 'impeccable' => 'hanken-grotesk-v12-latin-regular.woff2', 'fotoautomat' => 'figtree-v9-latin-regular.woff2'][$design] ?? ($ed ? 'albert-sans-v4-latin-regular.woff2' : 'dm-sans-latin-var.woff2'); ?>
-<link rel="preload" href="/assets/fonts/<?= e($pre) ?>" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/barlow-condensed-v13-latin-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="<?= e(asset('assets/css/base.css')) ?>">
-<?php if ($ed): ?><link rel="stylesheet" href="<?= e(asset('assets/css/layout-ed.css')) ?>">
-<?php endif; ?>
-<link rel="stylesheet" href="<?= e(asset('assets/css/theme-' . $design . '.css')) ?>">
+<link rel="stylesheet" href="<?= e(asset('assets/css/theme-bunt.css')) ?>">
 <script type="application/ld+json"><?= json_encode([
     '@context' => 'https://schema.org',
     '@type' => 'LodgingBusiness',
@@ -47,7 +42,7 @@ $tc = ['flamingo' => '#c7085a', 'lagune' => '#173f4c', 'showa' => '#3d2c26', 'bo
     'petsAllowed' => false,
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
 </head>
-<body class="d-<?= e($design) ?><?= $ed ? ' ed' : '' ?><?= $landing ? ' is-landing' : '' ?>"
+<body class="d-<?= e($design) ?><?= $landing ? ' is-landing' : '' ?>"
       data-pixel="<?= e($C['tracking']['meta_pixel_id']) ?>"
       <?php if (!empty($meta['view'])): ?>data-view="<?= e($meta['view']) ?>"<?php endif; ?>>
 <a class="skip" href="#main">Zum Inhalt springen</a>

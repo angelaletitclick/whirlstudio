@@ -29,11 +29,11 @@ page_start([
 ?>
 
 <section class="hero hero--studio">
-  <div class="hero__bg"><?= img($au['hero'], $au['image_alt'], '100vw', ['eager' => true, 'mobile' => $au['hero_m']]) ?></div>
+  <div class="hero__bg"><?= img($au['hero'], $au['hero_alt'] ?? $au['image_alt'], '100vw', ['eager' => true, 'mobile' => $au['hero_m']]) ?></div>
   <div class="wrap hero__in">
-    <p class="eyebrow"><?= e($au['eyebrow']) ?> · <?= e($C['claim']) ?></p>
-    <h1 class="h1"><?= e($au['title']) ?></h1>
-    <p class="hero__lead"><?= e($au['hero_lead'] ?? $au['lead']) ?></p>
+    <p class="eyebrow"><?= e($au['eyebrow']) ?> · <?= hl($C['claim']) ?></p>
+    <h1 class="h1"><?= hl($au['title']) ?></h1>
+    <?= hero_lead($au['hero_lead'] ?? $au['lead'], $au['hero_lead_short'] ?? null) ?>
     <div class="btns">
       <?= book_btn('Zielgruppe Hero ' . $au['eyebrow'], $bookHref) ?>
       <a class="btn btn--ghost" href="#studios">Studios ansehen</a>

@@ -5,7 +5,7 @@
     <div class="aud__media"><?= img($au['image'], $au['image_alt'], '(min-width: 900px) 50vw, 100vw') ?></div>
     <div class="aud__text">
       <p class="eyebrow"><?= e($au['eyebrow']) ?></p>
-      <h2 class="h2"><?= e($au['title']) ?></h2>
+      <h2 class="h2"><?= hl($au['title']) ?></h2>
       <p><?= e($au['lead']) ?></p>
       <ul class="chips" aria-label="Anlässe">
         <?php foreach ($au['occasions'] as $o): ?><li><?= e($o) ?></li><?php endforeach; ?>

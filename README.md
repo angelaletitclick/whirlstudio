@@ -6,7 +6,7 @@ Seiten: Startseite, `/pretty`, `/vibe`, `/buchen` (Landingpage für Ads), Impres
 ```
 php -S localhost:8000 -t public tools/router.php
 ```
-Seit dem Feedback vom 05.11.2026 gibt es nur noch das Design `bunt` (DM Serif Display + DM Sans). Der Design-Umschalter ist aus.
+Seit dem Feedback vom 05.11.2026 gibt es nur noch das Design `bunt` (seit 18.11.2026 Barlow Condensed + DM Sans). Testdesigns und Umschalter sind entfernt.
 
 ## Auf IONOS hochladen
 1. Den **Inhalt** von `public/` per SFTP in das Verzeichnis des IONOS-Projekts laden (inkl. `.htaccess`).
@@ -15,7 +15,7 @@ Seit dem Feedback vom 05.11.2026 gibt es nur noch das Design `bunt` (DM Serif Di
 
 ## Vor dem Livegang
 - `public/inc/bootstrap.php`: `STAGING = false`.
-- Nicht genutzte `theme-{salon,atelier,nocturne}.css`, alte Schriften (Jost, Cormorant, Italianno, Barlow) und ggf. `marble.webp` löschen.
+- Ggf. `marble.webp` löschen (alte Themes und Schriften sind seit 18.11.2026 entfernt).
 - Alle `TODO` in `public/inc/content.php`, `impressum.php`, `datenschutz.php`, `agb.php` erledigen.
 - Meta-Pixel-ID eintragen. Im Events Manager mit „Test-Events“ prüfen: PageView, ViewContent, InitiateCheckout, Contact.
 - Nach dem Domain-Umzug und erfolgreichem SSL: HSTS-Zeile in `.htaccess` aktivieren.

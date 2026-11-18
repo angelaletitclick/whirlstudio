@@ -5,26 +5,14 @@ declare(strict_types=1);
 const SITE_URL = 'https://www.whirlstudio.de';
 // Testphase: noindex. Vor Livegang auf false.
 const STAGING = true;
-// Seit Feedback 05.11.2026 ist „bunt“ das Design (DM Serif Display + DM Sans).
-// Die alten Varianten salon/atelier/nocturne sind nicht mehr angepasst und deshalb abgeschaltet.
-// Test 10.11.2026: weitere Designs nach den internen Design-Richtlinien, nur per ?design=<name>.
-// Sie teilen sich das Layout assets/css/layout-ed.css und unterscheiden sich in Farben/Headline-Schrift.
-// Vor Livegang: DESIGN_SWITCH auf false (dann gilt immer DEFAULT_DESIGN).
-const DESIGN_SWITCH = true;
+// Seit Feedback 05.11.2026 ist „bunt“ das Design (Überschriften: Barlow Condensed wie im Logo, Text: DM Sans).
+// Die Testdesigns (editorial, flamingo, lagune, showa, bordeaux, rosasee, impeccable, fotoautomat, bunt-poliert,
+// salon, atelier, nocturne) wurden am 18.11.2026 auf Nutzerwunsch entfernt; sie liegen noch in der Git-Historie.
+const DESIGN_SWITCH = false;
 const DESIGNS = [
-    'bunt'      => 'Bunt – fröhlich & hell',
-    'editorial' => 'Editorial – Pflaume, Petrol, Lavendel (Farben insidertour-hamburg.com)',
-    'flamingo'  => 'Flamingo – poppig: Rubin, Blush, Sonnengelb, Indigo',
-    'lagune'    => 'Lagune – Wada Nr. 178 + Weiß: Ivory Buff, Light Glaucous Blue, Green Blue, Button Orange',
-    'showa'     => 'Showa – Weinrot, Pinkrot, Magenta, Orchidee, Violett',
-    'bordeaux'  => 'Bordeaux – elegant: Weinrot, Altrosa, Gold',
-    'rosasee'   => 'Rosasee – Wada Nr. 194: Jasper Red, Muschelrosa, Olympic Blue',
-    'impeccable' => 'Impeccable – heller Private-Spa-Standard, Boutique-Hotel-Niveau (11.11.2026)',
-    'fotoautomat' => 'Fotoautomat – Wada Nr. 265: Old Rose, Apricot, Olive, Violettschwarz; Fotos als Abzüge',
-    'bunt-poliert' => 'Bunt poliert – bunt ohne Vorlagen-Merkmale (11.11.2026)',
+    'bunt' => 'Bunt – fröhlich & hell',
 ];
-// Designs auf Basis von layout-ed.css
-const DESIGNS_ED = ['editorial', 'flamingo', 'lagune', 'showa', 'bordeaux', 'rosasee'];
+const DESIGNS_ED = [];
 const DEFAULT_DESIGN = 'bunt';
 
 $C   = require __DIR__ . '/content.php';
@@ -169,4 +157,24 @@ function part(string $name, array $vars = []): void
     global $C;
     extract($vars, EXTR_SKIP);
     require __DIR__ . '/parts/' . $name . '.php';
+}
+
+/** Hebt die Schlüsselwörter hervor (Nutzer 18.11.2026): „Whirlpool“, „Private Spa“, „privates Spa“ usw.,
+ *  jeweils mit vorangestelltem „privat…/eigen…“, falls vorhanden. Gibt fertiges, escaptes HTML zurück. */
+function hl(?string $s): string
+{
+    return preg_replace(
+        '/(?<![\p{L}-])((?:privat|eigen)(?:e[mnrs]?)?\s+)?(Whirlpool|Spa)(?![\p{L}-])/iu',
+        '<mark class="hl">$0</mark>',
+        e($s)
+    );
+}
+
+/** Hero-Untertitel: höchstens zwei Zeilen. Auf schmalen Bildschirmen die Kurzfassung ($short), falls vorhanden. */
+function hero_lead(string $long, ?string $short = null): string
+{
+    if ($short === null || $short === '') {
+        return '<p class="hero__lead">' . hl($long) . '</p>';
+    }
+    return '<p class="hero__lead"><span class="lead-l">' . hl($long) . '</span><span class="lead-s">' . hl($short) . '</span></p>';
 }

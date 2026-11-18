@@ -23,9 +23,9 @@ page_start([
 <section class="hero hero--studio">
   <div class="hero__bg"><?= img($s['hero'], 'Whirlpool im Studio ' . $s['name'], '100vw', ['eager' => true, 'mobile' => $s['hero_m']]) ?></div>
   <div class="wrap hero__in">
-    <p class="eyebrow">Studio mit Whirlpool · Hamburg</p>
+    <p class="eyebrow"><?= hl('Studio mit Whirlpool · Hamburg') ?></p>
     <h1 class="h1 h1--name"><?= e($s['name']) ?></h1>
-    <p class="hero__lead"><?= e($s['tagline']) ?></p>
+    <?= hero_lead($s['tagline']) ?>
     <div class="btns">
       <?= book_btn('Studio Hero ' . $s['name'], '#kalender') ?>
     </div>
@@ -87,6 +87,6 @@ page_start([
   <?php part('studio-cards', ['exclude' => $slug]); ?>
 </section>
 
-<?php part('closing', ['image' => $s['gallery'][2][0] ?? 'ws-35', 'book' => '#kalender', 'eyebrow' => 'Studio ' . $s['name'], 'title' => $C['occasions']['default']['title']]); ?>
+<?php part('closing', ['image' => $s['gallery'][2][0] ?? 'pool-herz', 'book' => '#kalender', 'eyebrow' => 'Studio ' . $s['name'], 'title' => $C['occasions']['default']['title']]); ?>
 
 <?php page_end(['path' => '/' . $slug]); ?>

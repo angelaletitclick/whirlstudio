@@ -11,15 +11,55 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* ---------- Sanftes Einblenden ---------- */
-  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const moveOk = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Flippiges Einblenden (Nutzer 18.11.2026) ----------
+     Elemente federn gekippt herein; Geschwister kommen nacheinander (--d). Nach dem Einblenden wird
+     data-reveal entfernt, damit die Hover-Effekte wieder ihre eigenen, schnellen Übergänge haben. */
+  if ('IntersectionObserver' in window && moveOk) {
     const els = $$('.shead, .card, .price, .step, .fact, .faq, .intro__text, .intro__media, .review, .usp, .pick, .features, .perk, .aud__media, .aud__text');
-    els.forEach(el => el.setAttribute('data-reveal', ''));
+    els.forEach(el => {
+      el.setAttribute('data-reveal', '');
+      const sibs = [...el.parentElement.children].filter(c => els.includes(c));
+      const i = sibs.indexOf(el);
+      if (i > 0) el.style.setProperty('--d', Math.min(i, 6) * 0.11 + 's');
+    });
     body.classList.add('js-reveal');
+    const done = el => { el.removeAttribute('data-reveal'); el.style.removeProperty('--d'); };
     const ro = new IntersectionObserver(entries => entries.forEach(en => {
-      if (en.isIntersecting) { en.target.classList.add('is-in'); ro.unobserve(en.target); }
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      el.classList.add('is-in');
+      ro.unobserve(el);
+      const delay = parseFloat(el.style.getPropertyValue('--d')) || 0;
+      setTimeout(() => done(el), (delay + 1) * 1000);
     }), { rootMargin: '0px 0px -8% 0px' });
     els.forEach(el => ro.observe(el));
+  }
+
+  /* ---------- Hero-Überschrift: Wörter (bei nur einem Wort: Buchstaben) einzeln einhüpfen lassen ----------
+     Hervorgehobene Wörter (<mark class="hl">) bleiben als Ganzes zusammen. */
+  const heroTitle = $('.hero .h1');
+  if (heroTitle && moveOk) {
+    const text = heroTitle.textContent.trim();
+    const units = [];
+    [...heroTitle.childNodes].forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach(w => units.push(w));
+      else units.push(n.cloneNode(true));
+    });
+    const single = units.length === 1 && typeof units[0] === 'string';
+    const parts = single ? [...units[0]] : units;
+    heroTitle.setAttribute('aria-label', text);
+    heroTitle.textContent = '';
+    parts.forEach((p, i) => {
+      const s = document.createElement('span');
+      s.className = 'w';
+      s.setAttribute('aria-hidden', 'true');
+      s.style.setProperty('--i', i);
+      if (typeof p === 'string') s.textContent = p; else s.appendChild(p);
+      heroTitle.appendChild(s);
+      if (!single && i < parts.length - 1) heroTitle.appendChild(document.createTextNode(' '));
+    });
   }
 
   /* ---------- Mobiles Menü ---------- */
@@ -34,26 +74,36 @@
     document.addEventListener('keydown', e => e.key === 'Escape' && close());
   }
 
-  /* ---------- Hero-Überschrift: höchstens zwei Zeilen ----------
+  /* ---------- Hero-Überschrift und -Untertitel: höchstens zwei Zeilen (Untertitel: Nutzer 18.11.2026) ----------
      CSS gibt genug Breite für zwei Zeilen; wo das nicht reicht (Handy, schmale Spalte), wird die Schrift
-     schrittweise verkleinert, bis die Überschrift in zwei Zeilen passt. */
-  const heroH1 = $('.hero .h1');
-  if (heroH1) {
-    const lines = el => {
+     schrittweise verkleinert, bis der Text in zwei Zeilen passt. */
+  const lines = el => {
+    // Einzelne Wörter (.w) sind während der Animation verschoben/gedreht: dann die Layout-Position zählen
+    const ws = el.querySelectorAll('.w');
+    let tops;
+    if (ws.length) tops = [...ws].map(w => w.offsetTop);
+    else {
       const r = document.createRange();
       r.selectNodeContents(el);
-      const tops = new Set([...r.getClientRects()].filter(b => b.width > 0).map(b => Math.round(b.top)));
-      return tops.size;
-    };
-    const fit = () => {
-      heroH1.style.fontSize = '';
-      let fs = parseFloat(getComputedStyle(heroH1).fontSize);
-      const min = fs * 0.5;
-      while (lines(heroH1) > 2 && fs > min) {
+      tops = [...r.getClientRects()].filter(b => b.width > 0).map(b => b.top);
+    }
+    // Zeilen bündeln: Kästchen, die weniger als eine halbe Zeilenhöhe auseinander liegen, gehören zur selben Zeile
+    const tol = parseFloat(getComputedStyle(el).fontSize) * 0.5;
+    const rows = [];
+    tops.sort((a, b) => a - b).forEach(t => { if (!rows.length || t - rows[rows.length - 1] > tol) rows.push(t); });
+    return rows.length;
+  };
+  const fitTwo = [[$('.hero .h1'), 0.5], [$('.hero .hero__lead'), 0.8]].filter(([el]) => el);
+  if (fitTwo.length) {
+    const fit = () => fitTwo.forEach(([el, minFactor]) => {
+      el.style.fontSize = '';
+      let fs = parseFloat(getComputedStyle(el).fontSize);
+      const min = fs * minFactor;
+      while (lines(el) > 2 && fs > min) {
         fs *= 0.95;
-        heroH1.style.fontSize = fs + 'px';
+        el.style.fontSize = fs + 'px';
       }
-    };
+    });
     fit();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     let t;

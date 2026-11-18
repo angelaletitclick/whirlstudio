@@ -1,6 +1,6 @@
 /* BUNT – fröhlich & hell (Feedback 05.11.2026, Richtung insidertour-hamburg.com)
    Beere als Hauptfarbe, dazu Petrol, Sonnengelb, Koralle und Flieder auf zartem Rosa.
-   Schriften: DM Serif Display + DM Sans (siehe base.css). */
+   Schriften: Barlow Condensed (wie Logo) + DM Sans (siehe base.css). Bewegung: flippig (Nutzer 18.11.2026), Block am Ende von base.css. */
 :root {
   --bg: #fff8f5; --bg-alt: #fdeef4; --bg-lilac: #f1eafc; --bg-sun: #fff3d6; --bg-teal: #e3f3f1;
   --ink: #2b1630; --ink-soft: #6e5a70; --line: #ecd9e3;

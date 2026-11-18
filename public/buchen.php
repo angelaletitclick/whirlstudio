@@ -19,8 +19,8 @@ page_start([
 <section class="sec sec--alt book-top">
   <div class="wrap">
     <header class="shead shead--c">
-      <p class="eyebrow">Freie Termine · <?= e($C['claim']) ?></p>
-      <h1 class="h2"><?= e($occ['title']) ?></h1>
+      <p class="eyebrow">Freie Termine · <?= hl($C['claim']) ?></p>
+      <h1 class="h2"><?= hl($occ['title']) ?></h1>
       <p class="lead"><?= e($occ['lead']) ?></p>
     </header>
     <?php part('smoobu', ['url' => $C['smoobu']['all'], 'id' => 'apartmentIframeAll']); ?>

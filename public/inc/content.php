@@ -2,7 +2,7 @@
 /**
  * EINZIGE Quelle für Texte, Preise, Zeiten, Kontakt, FAQ, Studios.
  * Herkunft: whirlstudio.de (Stand 11/2026), jb-wellness-suite.de (Ausstattung), Booking.com (Bewertung),
- * Kundenfeedback 05.11.2026 (bis 8 Personen, Zielgruppen, Deko, keine Getränkepauschale, kein Zeitdruck).
+ * Kundenfeedback 05.11.2026 (bis 8 Personen, am 18.11.2026 korrigiert auf 6, Zielgruppen, Deko, keine Getränkepauschale, kein Zeitdruck).
  * TODO-Kommentare = vom Kunden zu bestätigen. Nichts erfinden.
  */
 
@@ -35,13 +35,13 @@ return [
         'stamp'    => '17:00 → 10:00',
     ],
 
-    // Kundenfeedback 05.11.2026: "bis zu 8 Personen buchbar".
-    // TODO: Preis ab der 3. Person? Schlafplätze für 8? Gilt das für beide Studios?
+    // Kundenfeedback 05.11.2026: "bis zu 8 Personen buchbar". Korrektur Nutzer 18.11.2026: bis zu 6 Personen, Aufpreis ab der 5. Person.
+    // TODO: Höhe des Aufpreises ab der 5. Person? Gilt das für beide Studios?
     'capacity' => [
-        'max'   => 8,
-        'label' => 'bis zu 8 Personen',
-        // Bis der Aufpreis geklärt ist: ehrlich auf Anfrage verweisen. TODO: Kunde nennt Preis ab der 3. Person.
-        'extra_note' => 'Preis ab der 3. Person bitte telefonisch anfragen',
+        'max'   => 6,
+        'label' => 'bis zu 6 Personen',
+        // Bis der Aufpreis geklärt ist: ehrlich auf Anfrage verweisen. TODO: Kunde nennt Preis ab der 5. Person.
+        'extra_note' => 'Preis ab der 5. Person bitte telefonisch anfragen',
     ],
 
     // TODO: Preise bestätigen (Meta-Beschreibung der alten Preisseite nennt "ab € 379.-")
@@ -78,10 +78,16 @@ return [
 
     'hero' => [
         'eyebrow' => 'Private Spa · Hamburg',
+        // Titelbild der Startseite (Nutzer 18.11.2026), ersetzt den Wechsel VIBE/PRETTY
+        'image'   => 'hero-party',
+        'image_m' => 'hero-party-m', // Hochformat-Ausschnitt fürs Handy
+        'image_alt' => 'Party im Whirlpool mit Herzballons, Kerzen und Wunderkerzen',
         'title'   => 'Studios mit Whirlpool in Hamburg',
         'script'  => 'Zeit für euch',
         // Vom Kunden/Agentur geliefert 11.11.2026
         'lead'    => 'Für romantische Auszeiten zu zweit, unvergessliche Mädelsabende und gemeinsame Momente mit Freunden – mit privatem Whirlpool und Übernachtung.',
+        // Kurzfassung fürs Handy (Hero-Untertitel max. 2 Zeilen, Nutzer 18.11.2026), aus dem Text oben gekürzt
+        'lead_short' => 'Zu zweit, Mädelsabend oder mit Freunden: privater Whirlpool & Übernachtung.',
     ],
 
     'intro' => [
@@ -103,10 +109,14 @@ return [
             'eyebrow' => 'Für Pärchen',
             'title'   => 'Zeit zu zweit – mit eigenem Whirlpool',
             'lead'    => 'Überrasche deinen Lieblingsmenschen: ein romantisches Refugium für Zweisamkeit und Entspannung, mitten in Hamburg.',
-            'image'   => 'pretty-6',
-            'image_alt' => 'Gedeckter Esstisch mit roten Rosen im Studio PRETTY',
-            'hero'    => 'ws-01',
-            'hero_m'  => 'ws-01',
+            'hero_lead_short' => 'Ein romantisches Refugium für Zweisamkeit und Entspannung, mitten in Hamburg.', // Handy-Kurzfassung, Nutzer 18.11.2026
+            // Bild aus „Whirlstudio Fotos 2“ Nr. 169 (Nutzer 18.11.2026)
+            'image'   => 'romantik-pool',
+            'image_alt' => 'Whirlpool mit Herzballon, Erdbeeren, Sekt und Kerzen',
+            // Titelbild /paare (Nutzer 18.11.2026)
+            'hero'    => 'paare-hero',
+            'hero_m'  => 'paare-hero-m', // Hochformat-Ausschnitt fürs Handy
+            'hero_alt' => 'Romantisch dekorierter Whirlpool mit Herzballons, Kerzen und Sekt',
             'occasions' => ['Geburtstag', 'Jahrestag', 'Kinderauszeit', 'Antrag'],
             // „Warum WhirlStudio“ auf /paare: die Liste 'auszeit', diese Punkte zuerst (groß)
             'first'   => ['Entspannt übernachten', 'Euer privater Rückzugsort', 'Euer eigener Whirlpool', 'Dekoration nach euren Wünschen'],
@@ -118,17 +128,20 @@ return [
             'nav'     => 'Mädelsabend & Gruppen',
             'eyebrow' => 'Mädelsabend & Gruppen',
             'title'   => 'Mädelsabend im eigenen Private Spa',
-            'lead'    => 'Mit bis zu 8 Personen: Whirlpool, XXL-Couch, große TVs und eine eigene Küche – und niemand sonst.',
+            'lead'    => 'Mit bis zu 6 Personen: Whirlpool, XXL-Couch, große TVs und eine eigene Küche – und niemand sonst.',
             // Nur für den Hero von /gruppen (Startseite nutzt weiter 'lead'). Vom Kunden/Agentur geliefert 11.11.2026
-            'hero_lead' => 'Whirlpool, XXL-Couch, große TVs und eine eigene Küche. Alles für einen unvergesslichen Abend mit bis zu 8 Personen',
-            'image'   => 'ws-17',
-            'image_alt' => 'Wohnbereich mit weißer XXL-Couch, Hängesessel und Whirlpool im Studio VIBE',
-            'hero'    => 'ws-17',
-            'hero_m'  => 'ws-04',
+            'hero_lead' => 'Whirlpool, XXL-Couch, große TVs und eine eigene Küche. Alles für einen unvergesslichen Abend mit bis zu 6 Personen',
+            'hero_lead_short' => 'Whirlpool, XXL-Couch, große TVs und eigene Küche – für bis zu 6 Personen.', // Handy-Kurzfassung, Nutzer 18.11.2026
+            // Bilder aus „Whirlstudio Fotos 2“ (Nutzer 18.11.2026): Nr. 47 (Abschnitt Startseite), Nr. 86 (Titelbild /gruppen)
+            'image'   => 'party-wohnzimmer',
+            'image_alt' => 'Wohnzimmer mit Ballons an der Decke, Kerzen und pinkem Flamingo',
+            'hero'    => 'gruppen-hero',
+            'hero_m'  => 'gruppen-hero-m', // Hochformat-Ausschnitt fürs Handy
+            'hero_alt' => 'Beleuchteter Whirlpool mit Ballons, Lichterketten und Kerzen',
             // „Junggesellinnenabschied“ seit 12.11.2026 aufgenommen (Freigabe durch die Agentur). Hausregel „keine Partylocation“ gilt weiter.
             'occasions' => ['Mädelsabend', 'Junggesellinnenabschied', 'Geburtstag', 'Freundinnen-Wochenende'],
             // „Warum WhirlStudio“ auf /gruppen: die Liste 'auszeit', diese Punkte zuerst (groß)
-            'first'   => ['Platz für bis zu 8 Personen', 'Getränke nach eurem Geschmack', 'Dekoration nach euren Wünschen', 'Entspannt übernachten'],
+            'first'   => ['Platz für bis zu 6 Personen', 'Getränke nach eurem Geschmack', 'Dekoration nach euren Wünschen', 'Entspannt übernachten'],
             'landing' => 'maedelsabend',
             'faq'     => ['personen', 'party', 'inklusive', 'ankunft'],
         ],
@@ -226,7 +239,7 @@ return [
         'items' => [
             ['title' => 'Entspannt übernachten', 'text' => 'Kein Stundentakt und kein Zeitdruck. Genießt eure gemeinsame Auszeit über Nacht bis zum Check-out am nächsten Morgen.'],
             ['title' => 'Euer privater Rückzugsort', 'text' => 'Keine anderen Gäste, kein Hotelbetrieb – das gesamte Apartment gehört ganz euch.'],
-            ['title' => 'Platz für bis zu 8 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder gemeinsamer Kurztrip mit Freunden – hier ist Platz für eure Lieblingsmenschen.'],
+            ['title' => 'Platz für bis zu 6 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder gemeinsamer Kurztrip mit Freunden – hier ist Platz für eure Lieblingsmenschen.'],
             ['title' => 'Getränke nach eurem Geschmack', 'text' => 'Bringt eure Lieblingsgetränke einfach selbst mit. Ganz ohne Getränkepauschale oder zusätzliche Kosten.'],
             ['title' => 'Euer eigener Whirlpool', 'text' => 'Genießt wohltuendes Whirlpool-Wasser bei ca. 37 °C. Für jeden Aufenthalt frisch befüllt und hygienisch aufbereitet.'],
             ['title' => 'Stilvolle Details', 'text' => 'Liebevoll ausgewählte Dekoration und hochwertige Wohnaccessoires sorgen für ein besonderes Ambiente.'],
@@ -240,7 +253,7 @@ return [
 
     // "Alles, was ihr für eure Auszeit braucht" – Kundenfeedback 05.11.2026
     'perks' => [
-        ['title' => 'Platz für bis zu 8 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder Kurztrip mit Freunden – hier könnt ihr eure gemeinsame Zeit genießen.'],
+        ['title' => 'Platz für bis zu 6 Personen', 'text' => 'Ob romantische Auszeit zu zweit, Mädelsabend oder Kurztrip mit Freunden – hier könnt ihr eure gemeinsame Zeit genießen.'],
         // Texte Deko/Getränke vom Kunden/Agentur geliefert 11.11.2026.
         ['title' => 'Getränke ganz nach eurem Geschmack', 'text' => 'Bringt eure Lieblingsgetränke einfach selbst mit – ganz ohne Getränkepauschale oder zusätzliche Kosten.'],
         ['title' => 'Eine ganze Nacht für euch', 'text' => 'Keine stundenweise Buchung, kein Zeitdruck. Genießt euren Aufenthalt ganz entspannt bis zum Check-out am nächsten Morgen.'],
@@ -250,7 +263,7 @@ return [
 
     'facts' => [
         ['title' => 'Eigener Whirlpool',  'text' => 'Ca. 37 °C, für jeden Gast desinfiziert und mit Frischwasser befüllt.'],
-        ['title' => 'Nur für euch',       'text' => 'Ferienwohnung statt Hotel – kein Empfang, keine anderen Gäste. Buchbar für bis zu 8 Personen.'],
+        ['title' => 'Nur für euch',       'text' => 'Ferienwohnung statt Hotel – kein Empfang, keine anderen Gäste. Buchbar für bis zu 6 Personen.'],
         ['title' => 'Check-in 17–22 Uhr', 'text' => 'Persönliche Schlüsselübergabe mit kurzer Einweisung vor Ort.'],
         ['title' => 'Voll ausgestattete Küche', 'text' => 'Gläser, Geschirr, Kaffeemaschine. Kaffee und Tee sind kostenfrei.'],
         ['title' => 'Handtücher & Bettwäsche', 'text' => 'Alles da. Die normale Endreinigung ist im Preis inbegriffen.'],
@@ -265,7 +278,7 @@ return [
     ],
 
     'faq' => [
-        'personen'    => ['q' => 'Für wie viele Personen kann ich buchen?', 'a' => 'Die Studios sind für bis zu 8 Personen buchbar. Die angegebenen Preise gelten für 2 Personen.'], // TODO: Aufpreis ab der 3. Person
+        'personen'    => ['q' => 'Für wie viele Personen kann ich buchen?', 'a' => 'Die Studios sind für bis zu 6 Personen buchbar. Die angegebenen Preise gelten für 2 Personen.'], // TODO: Aufpreis ab der 5. Person
         'fruehstueck' => ['q' => 'Ist Frühstück inklusive?', 'a' => 'Nein. Im Übernachtungspreis ist kein Frühstück inbegriffen, und es kann auch nicht extra gebucht werden. In fußläufiger Umgebung gibt es Restaurants und Cafés – euer Gästebetreuer berät euch gerne.'],
         'ankunft'     => ['q' => 'Wie läuft die Ankunft?', 'a' => 'Check-in ist von 17 bis 22 Uhr, Check-out bis 10 Uhr am Folgetag. An- und Abreisetag gelten als ein Tag. Bitte teilt uns einen Tag vorher eure Ankunftszeit per SMS mit. Kommt es am Anreisetag zu Verzögerungen, gebt uns bitte ebenfalls kurz Bescheid. Beim Check-in legen alle Gäste gemeinsam ihren Personalausweis vor. Danach gibt es eine kurze Einweisung und den Schlüssel.'],
         'zahlung'     => ['q' => 'Wie bezahle ich?', 'a' => 'Nach der Buchung erhaltet ihr innerhalb von 24 Stunden eine Buchungsbestätigung und die Rechnung per E-Mail. Die Rechnung ist kurzfristig zu begleichen. Barzahlungen werden nicht akzeptiert.'], // TODO: Zahlungsarten
@@ -288,7 +301,7 @@ return [
         'jahrestag'    => ['title' => 'Euer Jahrestag mit eigenem Whirlpool', 'lead' => 'Zweisamkeit und Entspannung – mitten in Hamburg.'],
         'antrag'       => ['title' => 'Ein Antrag, den ihr nie vergesst', 'lead' => 'Ein romantisches Refugium mit eigenem Whirlpool – mitten in Hamburg.'],
         'auszeit'      => ['title' => 'Eine Nacht nur für euch zwei', 'lead' => 'Die spontane Kinderauszeit mit eigenem Whirlpool – mitten in Hamburg.'],
-        'maedelsabend' => ['title' => 'Euer Mädelsabend mit eigenem Whirlpool', 'lead' => 'Bis zu 8 Personen, ein Private Spa nur für euch – mitten in Hamburg.'],
+        'maedelsabend' => ['title' => 'Euer Mädelsabend mit eigenem Whirlpool', 'lead' => 'Bis zu 6 Personen, ein Private Spa nur für euch – mitten in Hamburg.'],
     ],
 
     // Abschluss der Startseite. Zielgruppen- und Studioseiten nutzen die passende Überschrift aus 'occasions'.

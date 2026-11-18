@@ -10,19 +10,15 @@ page_start([
 ]);
 ?>
 
-<section class="hero hero--fade">
+<section class="hero hero--home">
+  <?php /* Ein festes Titelbild (Nutzer 18.11.2026) statt Wechsel VIBE/PRETTY mit „Im Bild“-Hinweis */ ?>
   <div class="hero__bg">
-    <?php $n = 0; foreach (['vibe', 'pretty'] as $slug): $s = $C['studios'][$slug]; ?>
-      <div class="hero__slide"><?= img($s['hero'], 'Whirlpool im Studio ' . $s['name'], '100vw', ['eager' => $n === 0, 'lazy' => $n++ === 0, 'mobile' => $s['hero_m']]) ?></div>
-    <?php endforeach; ?>
-  </div>
-  <div class="hero__tags" data-stamp="<?= e($C['times']['stamp']) ?>">
-    <?php foreach (['vibe', 'pretty'] as $slug): ?><a href="/<?= e($slug) ?>">Im Bild: Studio <?= e($C['studios'][$slug]['name']) ?></a><?php endforeach; ?>
+    <?= img($h['image'], $h['image_alt'], '100vw', ['eager' => true, 'lazy' => false, 'mobile' => $h['image_m']]) ?>
   </div>
   <div class="wrap hero__in">
-    <p class="eyebrow"><?= e($h['eyebrow']) ?></p>
-    <h1 class="h1"><?= e($h['title']) ?></h1>
-    <p class="hero__lead"><?= e($h['lead']) ?></p>
+    <p class="eyebrow"><?= hl($h['eyebrow']) ?></p>
+    <h1 class="h1"><?= hl($h['title']) ?></h1>
+    <?= hero_lead($h['lead'], $h['lead_short'] ?? null) ?>
     <div class="btns">
       <?= book_btn('Hero') ?>
       <a class="btn btn--ghost" href="#studios">Studios ansehen</a>
@@ -38,12 +34,12 @@ page_start([
   <div class="wrap intro__grid">
     <div class="intro__text">
       <p class="eyebrow"><?= e($i['eyebrow']) ?></p>
-      <h2 class="h2"><?= e($i['title']) ?></h2>
+      <h2 class="h2"><?= hl($i['title']) ?></h2>
       <?php foreach ($i['paras'] as $p): ?><p><?= e($p) ?></p><?php endforeach; ?>
     </div>
     <div class="intro__media">
-      <div class="intro__img1"><?= img('ws-01', 'Sekt und Gläser auf dem Tablett am Whirlpool', '(min-width: 900px) 30vw, 70vw') ?></div>
-      <div class="intro__img2"><?= img('pretty-6', 'Gedeckter Esstisch mit roten Rosen im Studio PRETTY', '(min-width: 900px) 25vw, 60vw') ?></div>
+      <div class="intro__img1"><?= img('romantik-hochkant', 'Erdbeeren, Sektgläser und Kerzen vor dem Whirlpool', '(min-width: 900px) 30vw, 70vw') ?></div>
+      <div class="intro__img2"><?= img('rosenbett', 'Bett mit einem Herz aus Rosenblättern', '(min-width: 900px) 25vw, 60vw') ?></div>
     </div>
   </div>
 </section>
