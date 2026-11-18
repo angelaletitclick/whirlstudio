@@ -81,4 +81,8 @@ return [
   'romantik-hochkant' => [[800,1200,'romantik-hochkant-800.webp'], [1400,2100,'romantik-hochkant-1400.webp'], [2200,3300,'romantik-hochkant-2200.webp']],
   'rosenbett' => [[800,533,'rosenbett-800.webp'], [1400,933,'rosenbett-1400.webp'], [2200,1467,'rosenbett-2200.webp']],
   'pool-herz' => [[800,533,'pool-herz-800.webp'], [1400,933,'pool-herz-1400.webp'], [2200,1467,'pool-herz-2200.webp']],
+  'pretty-titel' => [[800,533,'pretty-titel-800.webp'], [1400,933,'pretty-titel-1400.webp'], [2200,1467,'pretty-titel-2200.webp']],
+  'pretty-titel-m' => [[800,1333,'pretty-titel-m-800.webp'], [1400,2333,'pretty-titel-m-1400.webp']],
+  'maedelsabend' => [[800,537,'maedelsabend-800.webp'], [1400,939,'maedelsabend-1400.webp'], [2200,1476,'maedelsabend-2200.webp']],
+  'maedelsabend-m' => [[800,1333,'maedelsabend-m-800.webp'], [1400,2334,'maedelsabend-m-1400.webp']],
 ];

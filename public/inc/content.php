@@ -132,9 +132,10 @@ return [
             // Nur für den Hero von /gruppen (Startseite nutzt weiter 'lead'). Vom Kunden/Agentur geliefert 11.11.2026
             'hero_lead' => 'Whirlpool, XXL-Couch, große TVs und eine eigene Küche. Alles für einen unvergesslichen Abend mit bis zu 6 Personen',
             'hero_lead_short' => 'Whirlpool, XXL-Couch, große TVs und eigene Küche – für bis zu 6 Personen.', // Handy-Kurzfassung, Nutzer 18.11.2026
-            // Bilder aus „Whirlstudio Fotos 2“ (Nutzer 18.11.2026): Nr. 47 (Abschnitt Startseite), Nr. 86 (Titelbild /gruppen)
-            'image'   => 'party-wohnzimmer',
-            'image_alt' => 'Wohnzimmer mit Ballons an der Decke, Kerzen und pinkem Flamingo',
+            // Mädelsabend-Motiv mit Silhouetten (Nutzer 18.11.2026): Abschnitt Startseite, „Warum WhirlStudio“ und Abschluss auf /gruppen
+            'image'   => 'maedelsabend',
+            'image_alt' => 'Wohnzimmer mit Ballons, Kerzen und Sekt – vier Frauen-Silhouetten feiern auf der Couch',
+            // Titelbild /gruppen: „Whirlstudio Fotos 2“ Nr. 86 (Nutzer 18.11.2026 wieder zurück)
             'hero'    => 'gruppen-hero',
             'hero_m'  => 'gruppen-hero-m', // Hochformat-Ausschnitt fürs Handy
             'hero_alt' => 'Beleuchteter Whirlpool mit Ballons, Lichterketten und Kerzen',
@@ -162,14 +163,15 @@ return [
             'name'    => 'PRETTY',
             'tagline' => '… für alle, die es klassisch mögen',
             'size'    => 'über 100 qm', // TODO: Portale nennen 100 m²
-            'hero'    => 'pretty-3',
-            'hero_m'  => 'pretty-1',
+            // Titelbild PRETTY: „Whirlstudio Fotos 2“ Nr. 19 (Nutzer 18.11.2026), vorher pretty-3 / pretty-1
+            'hero'    => 'pretty-titel',
+            'hero_m'  => 'pretty-titel-m', // Hochformat-Ausschnitt fürs Handy
             'card'    => 'pretty-1',
             // Fotos von der alten Website (max. 1587 px). TODO: Originale von PRETTY in voller Auflösung anfragen.
             'gallery' => [
                 ['pretty-1', 'Whirlpool im Studio PRETTY mit Sekt und Gläsern am Beckenrand', 'Whirlpool'],
                 ['pretty-2', 'Großer Whirlpool mit blauer Beleuchtung im Studio PRETTY', 'Whirlpool'],
-                ['pretty-3', 'Blick auf den beleuchteten Whirlpool im Studio PRETTY', 'Whirlpool'],
+                ['pretty-titel', 'Whirlpool im Studio PRETTY mit Ballons, Kerzen und Spiegelwand', 'Whirlpool'],
                 ['pretty-4', 'Wohnbereich mit dunkler Couch und Whirlpool im Studio PRETTY', 'Wohnzimmer'],
                 ['pretty-7', 'Wohnbereich mit Couch, Pflanzen und Whirlpool', 'Wohnzimmer'],
                 ['pretty-5', 'Esszimmer mit weißen Stühlen, Kronleuchter und TV', 'Esszimmer'],
@@ -314,9 +316,8 @@ return [
     // Footer-Satz unter dem Logo. TODO: Kunde gibt Text frei.
     'footer_tagline' => 'Erlebe Hamburg – buche dein Wellness-Übernachtungs-Abenteuer.',
 
-    // Kurzfassung der Hausregeln unter dem Kalender (aus FAQ party/hygiene/hunde/alter, Details in den AGB)
-    'house_rules' => ['Nur die gebuchten Gäste', 'Ruhezeiten einhalten', 'Nichts ins Whirlpool-Wasser', 'Keine Haustiere', 'Ab 18 Jahren'],
+    // Hausregeln unter dem Kalender am 18.11.2026 auf Nutzerwunsch entfernt (stehen weiter in AGB und FAQ „party“).
 
-    // Volle Fassung (FAQ „party“). Unter dem Kalender steht stattdessen die Kurzfassung 'house_rules'.
+    // Volle Fassung (FAQ „party“). Wird derzeit nirgends angezeigt.
     'house_note' => 'Unsere Studios sind Ferienwohnungen und keine Partylocations. Bei Verstoß erfolgt ein sofortiges Hausverbot.',
 ];

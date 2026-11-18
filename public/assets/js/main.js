@@ -17,7 +17,7 @@
      Elemente federn gekippt herein; Geschwister kommen nacheinander (--d). Nach dem Einblenden wird
      data-reveal entfernt, damit die Hover-Effekte wieder ihre eigenen, schnellen Übergänge haben. */
   if ('IntersectionObserver' in window && moveOk) {
-    const els = $$('.shead, .card, .price, .step, .fact, .faq, .intro__text, .intro__media, .review, .usp, .pick, .features, .perk, .aud__media, .aud__text');
+    const els = $$('.shead, .card, .price, .step, .fact, .faq, .intro__text, .intro__media, .review, .usp, .pick, .features, .perk, .aud__media, .aud__text, .why__head, .why__media, .why__item');
     els.forEach(el => {
       el.setAttribute('data-reveal', '');
       const sibs = [...el.parentElement.children].filter(c => els.includes(c));

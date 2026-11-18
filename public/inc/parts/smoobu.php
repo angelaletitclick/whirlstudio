@@ -18,8 +18,4 @@ $sm = $C['smoobu']; ?>
       <?= book_btn('Smoobu Fallback', $url, '', ['target' => '_blank', 'rel' => 'noopener']) ?>
     </div>
   </div>
-  <div class="rules">
-    <p class="eyebrow">Hausregeln</p>
-    <ul><?php foreach ($C['house_rules'] as $r): ?><li><?= e($r) ?></li><?php endforeach; ?></ul>
-  </div>
 </div>

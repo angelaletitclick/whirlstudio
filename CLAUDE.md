@@ -23,7 +23,7 @@ PHP-Website ohne Framework und ohne Build-Schritt. Hosting: IONOS-Webspace (Apac
 - Bewegung „flippig“ (Nutzer 18.11.2026): federnde Einblendungen, Hero-Überschrift Wort für Wort, wackelnder Buchungs-Button; Block am Ende von `base.css`, Logik in `main.js`. Nur bei `prefers-reduced-motion: no-preference`.
 - Schlüsselwörter (Whirlpool, Private Spa, privates Spa …) werden über `hl()` hervorgehoben: auf Fotos/Dunkel Sonnengelb, auf Hell gelber Marker. Für Überschriften, Hero-Zeilen und Abschnittstitel `hl()` statt `e()` verwenden (escapt selbst).
 - Hero-Untertitel höchstens zwei Zeilen: `hero_lead($lang, $kurz)`; bis 820 px Breite erscheint die Kurzfassung (`lead_short` / `hero_lead_short` in `content.php`), sonst verkleinert `main.js` die Schrift.
-- Titelbilder: Startseite `hero-party`, /paare `paare-hero`, /gruppen `gruppen-hero` (je mit `-m` Hochformat fürs Handy). Startseiten-Hero hat zusätzlich schwarzen Verlauf + Vignette (`.hero--home`).
+- Titelbilder: Startseite `hero-party`, /paare `paare-hero`, /gruppen `maedelsabend`, PRETTY `pretty-titel` (je mit `-m` Hochformat fürs Handy). Alle Heros haben einen leichten schwarzen Verlauf + Vignette (`.hero .hero__bg::after` am Ende von `base.css`).
 
 ## Befehle
 - Lokal starten: `php -S localhost:8000 -t public tools/router.php`

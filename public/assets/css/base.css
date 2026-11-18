@@ -361,10 +361,6 @@ a:hover > .link .i, .link:hover .i, a:hover .link .i { transform: translateX(4px
 .booking__fallback { background: #fff; }
 .booking__info a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .booking__info strong { display: block; }
-.rules { margin: 24px auto 0; max-width: 720px; text-align: center; color: var(--ink-soft); font-size: var(--fs-s); }
-.rules ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 20px; margin-top: 6px; }
-.rules li::before { content: '·'; margin-right: 8px; color: var(--accent); }
-.rules li:first-child::before { content: none; }
 @media (max-width: 899px) { .booking { padding-bottom: 72px; } }
 
 /* ---------- Landingpage ---------- */
@@ -656,11 +652,45 @@ mark.hl::after { content: ''; position: absolute; z-index: -1; left: -.08em; rig
   .hero__lead .lead-s { display: inline; }
 }
 
-/* ---------- Startseiten-Hero: schwarzer Verlauf + Vignette für bessere Lesbarkeit (Nutzer 18.11.2026) ----------
-   Von unten dunkler (hinter Überschrift, Untertitel, Buttons), oben leicht für Logo und Menü, Ränder abgedunkelt. */
-.hero--home .hero__bg::after {
+/* ---------- Alle Hero-Bereiche: schwarzer Verlauf + Vignette für bessere Lesbarkeit (Nutzer 18.11.2026) ----------
+   Ersetzt den alten violetten Verlauf. Bewusst leichter als die erste Fassung der Startseite:
+   unten etwas dunkler (hinter Text und Buttons), oben leicht für Logo und Menü, Ränder sanft abgedunkelt. */
+.hero .hero__bg::after {
   background:
-    radial-gradient(ellipse 55% 32% at 50% 68%, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 100%),
-    radial-gradient(ellipse 75% 65% at 50% 40%, rgba(0,0,0,0) 30%, rgba(0,0,0,.75) 100%),
-    linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,.6) 30%, rgba(0,0,0,.42) 52%, rgba(0,0,0,.12) 72%, rgba(0,0,0,.35) 100%);
+    radial-gradient(ellipse 55% 32% at 50% 68%, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 100%),
+    radial-gradient(ellipse 75% 65% at 50% 40%, rgba(0,0,0,0) 35%, rgba(0,0,0,.45) 100%),
+    linear-gradient(0deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.38) 30%, rgba(0,0,0,.24) 52%, rgba(0,0,0,.06) 72%, rgba(0,0,0,.22) 100%);
+}
+
+/* =========================================================
+   „Warum WhirlStudio“ als ein Abschnitt (inc/parts/why.php, Nutzer 18.11.2026)
+   Ersetzt Kacheln (.perks) + Fakten-Liste (.facts): ein Raster, alle Punkte gleich gestaltet.
+   ========================================================= */
+.why { display: grid; gap: clamp(32px, 5vw, 72px); grid-template-columns: 1fr; }
+.why__head .h2 { margin-bottom: .1em; }
+.why__head .chips { margin-top: 1em; }
+.why__head .chips li { background: var(--bg-alt); }
+.why__media { margin-top: clamp(24px, 3vw, 36px); }
+.why__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow); }
+.why__list { display: grid; gap: 8px; grid-template-columns: 1fr; counter-reset: none; }
+.why__item { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 20px 20px 18px; border-radius: var(--r-s); background: #fff; box-shadow: 0 1px 0 var(--line), 0 10px 26px -22px rgba(58,15,46,.4); }
+.why__item .h3 { margin-bottom: .2em; }
+.why__item p { margin: 0; color: var(--ink-soft); font-size: var(--fs-s); line-height: 1.6; }
+.why__n { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; font: 500 var(--fs-3)/1 var(--f-head); background: var(--accent); color: #fff; }
+.why__item:nth-child(5n+2) .why__n { background: var(--c2); }
+.why__item:nth-child(5n+3) .why__n { background: var(--c3); color: var(--ink); }
+.why__item:nth-child(5n+4) .why__n { background: var(--c4); color: var(--ink); }
+.why__item:nth-child(5n+5) .why__n { background: var(--c5); color: var(--ink); }
+@media (min-width: 700px) { .why__list { grid-template-columns: 1fr 1fr; gap: 12px; } }
+@media (min-width: 1000px) {
+  .why { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); align-items: start; }
+  .why__side { position: sticky; top: 100px; }
+  .why__media img { aspect-ratio: 4 / 5; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .why__item { transition: transform .45s var(--spring), box-shadow .3s; }
+  .why__item:hover { transform: translateY(-4px) rotate(-.8deg); box-shadow: 0 1px 0 var(--line), 0 22px 36px -24px rgba(58,15,46,.55); }
+  .why__item:nth-child(even):hover { transform: translateY(-4px) rotate(.8deg); }
+  .why__n { transition: transform .5s var(--spring); }
+  .why__item:hover .why__n { transform: scale(1.15) rotate(-8deg); }
 }

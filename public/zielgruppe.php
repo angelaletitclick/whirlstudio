@@ -15,9 +15,6 @@ $bookHref = '/buchen?anlass=' . $au['landing'] . '#kalender';
 $rank = fn(array $it) => ($i = array_search($it['title'], $au['first'], true)) === false ? 99 : $i;
 $items = $C['auszeit']['items'];
 usort($items, fn($x, $y) => $rank($x) <=> $rank($y));
-$top = count($au['first']);
-$perks = array_slice($items, 0, $top);
-$facts = array_slice($items, $top);
 
 page_start([
     'title' => $au['title'] . ' | WhirlStudio Hamburg',
@@ -28,7 +25,7 @@ page_start([
 ]);
 ?>
 
-<section class="hero hero--studio">
+<section class="hero hero--studio hero--<?= e($au['slug']) ?>">
   <div class="hero__bg"><?= img($au['hero'], $au['hero_alt'] ?? $au['image_alt'], '100vw', ['eager' => true, 'mobile' => $au['hero_m']]) ?></div>
   <div class="wrap hero__in">
     <p class="eyebrow"><?= e($au['eyebrow']) ?> · <?= hl($C['claim']) ?></p>
@@ -45,28 +42,14 @@ page_start([
   </div>
 </section>
 
-<?php
-// Test: alternative Darstellungen der Liste (Umschalter rechts, $liste aus bootstrap.php)
-$GLOBALS['switch_groups'][] = 'liste';
-?>
-<?php if ($liste !== 'o'): ?>
-<section class="sec<?= $liste === 'c' ? ' sec--flush' : '' ?>" id="warum">
+<section class="sec" id="warum">
   <div class="wrap">
-    <?php part('reasons', [
-        'variant' => $liste, 'items' => array_merge($perks, $facts), 'top' => $top,
-        'image' => $au['image'], 'title' => 'Warum WhirlStudio', 'text' => implode(' · ', $au['occasions']),
+    <?php part('why', [
+        'title' => 'Warum WhirlStudio', 'occasions' => $au['occasions'], 'items' => $items,
+        'image' => $au['why_image'] ?? $au['image'], 'image_alt' => $au['why_image_alt'] ?? $au['image_alt'],
     ]); ?>
   </div>
 </section>
-<?php else: ?>
-<section class="sec" id="warum">
-  <div class="wrap">
-    <?php part('head', ['title' => 'Warum WhirlStudio', 'text' => implode(' · ', $au['occasions'])]); ?>
-    <?php part('perks', ['items' => $perks]); ?>
-    <?php part('facts', ['items' => $facts]); ?>
-  </div>
-</section>
-<?php endif; ?>
 
 <section class="sec sec--dark" id="studios">
   <div class="wrap">
